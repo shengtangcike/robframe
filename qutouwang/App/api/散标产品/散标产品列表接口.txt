@@ -1,0 +1,33 @@
+*** Settings ***
+Resource     ../../../../config_file/Data.txt
+Resource     ../../../${data_env}/resource.txt
+Resource     ../../../keyword/keyword.txt
+Library    lib
+Test Template     HttpApi
+Suite Setup     
+
+*** Test Cases ***
+case1
+    [Documentation]    默认排序
+    [Tags]    Level1
+    /api/scatteredProduct/findScatteredProductList    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"sortType": "0"}    None    None    "code":0
+case2
+    [Documentation]    利率降序
+    [Tags]    Level2
+    /api/scatteredProduct/findScatteredProductList    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"sortType": "1"}    None    None    "code":0
+case3
+    [Documentation]    利率升序
+    [Tags]    Level2
+    /api/scatteredProduct/findScatteredProductList    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"sortType": "2"}    None    None    "code":0
+case4
+    [Documentation]    借款期限降序
+    [Tags]    Level2
+    /api/scatteredProduct/findScatteredProductList    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"sortType": "3"}    None    None    "code":0
+case5
+    [Documentation]    借款期限升序
+    [Tags]    Level2
+    /api/scatteredProduct/findScatteredProductList    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"sortType": "4"}    None    None    "code":0
+
+
+
+

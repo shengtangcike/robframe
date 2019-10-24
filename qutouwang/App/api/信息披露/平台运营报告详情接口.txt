@@ -1,0 +1,13 @@
+*** Settings ***
+Resource     ../../../../config_file/Data.txt
+Resource     ../../../${data_env}/resource.txt
+Resource     ../../../keyword/keyword.txt
+Library    lib
+Test Template     HttpApi
+Suite Setup     
+
+*** Test Cases ***
+case1
+    [Documentation]    2019年2月运营报告详情
+    [Tags]    Level1
+    /api/platform/findRunReportDetail    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"reportId":"13"}    None    None    "code":0

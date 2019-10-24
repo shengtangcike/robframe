@@ -1,0 +1,49 @@
+*** Settings ***
+Resource     ../../../../config_file/Data.txt
+Resource     ../../../${data_env}/resource.txt
+Resource     ../../../keyword/keyword.txt
+Library    lib
+Test Template     HttpApi
+Suite Setup
+
+*** Test Cases ***
+case1
+    [Documentation]    注册出借人校验，出借人手机号检查
+    [Tags]    Level1
+    /api/userRegister/checkPhone    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"mobile": "${Newphone1}","platformType":"1"}    None    None    "code":0
+case2
+    [Documentation]    注册出借人校验，未注册手机号检查
+    [Tags]    Level2
+    /api/userRegister/checkPhone    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"mobile": "15712349876","platformType":"1"}    None    None    该手机号尚未注册
+case3
+    [Documentation]    注册出借人校验，借款人手机号检查
+    [Tags]    Level2
+    /api/userRegister/checkPhone    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"mobile": "${NewLoanphone1}","platformType":"1"}    None    None    手机号在去投网平台是借款人
+case4
+    [Documentation]    注册借款人校验，未注册手机号检查
+    [Tags]    Level2
+    /api/userRegister/checkPhone    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"mobile": "15712349876","platformType":"2"}    None    None    该手机号尚未注册
+case5
+    [Documentation]    注册借款人校验，出借人手机号检查
+    [Tags]    Level2
+    /api/userRegister/checkPhone    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"mobile": "${Newphone1}","platformType":"2"}    None    None    该手机号在去投网平台是出借人的身份
+case6
+    [Documentation]    注册借款人校验，借款人手机号检查
+    [Tags]    Level2
+    /api/userRegister/checkPhone    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"mobile": "${NewLoanphone1}","platformType":"2"}    None    None    "code":0
+case7
+    [Documentation]    手机号码格式错误
+    [Tags]    Level2
+    /api/userRegister/checkPhone    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"mobile": "666","platformType":"2"}    None    None    手机号码格式错误
+case8
+    [Documentation]    手机号码为空
+    [Tags]    Level2
+    /api/userRegister/checkPhone    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"mobile": "","platformType":"2"}    None    None    手机号不能为空
+case9
+    [Documentation]    不传mobile参数(mobile为必传项)
+    [Tags]    Level3
+    /api/userRegister/checkPhone    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"platformType":"2"}    None    None    Required String parameter 'mobile' is not present
+case10
+    [Documentation]    不传platformType参数，未注册手机号检查
+    [Tags]    Level3
+    /api/userRegister/checkPhone    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"mobile": "15712349876"}    None    None    该手机号尚未注册

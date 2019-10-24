@@ -1,0 +1,9 @@
+*** Settings ***
+Force Tags        rob
+
+*** Test Cases ***
+Case2
+    log    Hello World
+
+Case1
+    log    Hello eeee

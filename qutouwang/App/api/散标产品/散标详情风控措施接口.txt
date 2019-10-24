@@ -1,0 +1,15 @@
+*** Settings ***
+Resource     ../../../../config_file/Data.txt
+Resource     ../../../${data_env}/resource.txt
+Resource     ../../../keyword/keyword.txt
+Library    lib
+Test Template     HttpApi
+Suite Setup     
+
+*** Test Cases ***
+case1
+    [Documentation]    散标的风控措施
+    [Tags]    Level1
+    /api/scatteredProduct/riskManagement    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"pactissueNo": "${bidNocore}"}    None    None    "code":0
+
+

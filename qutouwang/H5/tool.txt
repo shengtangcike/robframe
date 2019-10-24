@@ -1,0 +1,27 @@
+*** Settings ***
+Resource     ../../../../config_file/Data.txt
+Resource     ../../../${data_env}/resource.txt
+Resource     ../../../keyword/keyword.txt
+Library    lib
+Suite Setup     loan and core login
+
+
+*** Test Cases ***
+case1
+	[Documentation]  借款人Pc借款端还款
+	[Tags]  Level1
+	repaymentdebt    19900000001    a1234567    jj2019071500010     4
+
+case2
+    [Documentation]  核心回款
+	[Tags]  Level1
+    corereturnedmoney    jj2019071500010     4
+
+
+
+*** Keywords ***
+loan and core login
+    loansyslogin    ${loanusername}    ${loanuserpassword}
+    coresyslogin
+
+

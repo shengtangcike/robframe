@@ -1,0 +1,20 @@
+*** Settings ***
+Resource     ../../../../config_file/Data.txt
+Resource     ../../../${data_env}/resource.txt
+Resource     ../../../keyword/keyword.txt
+Library    lib
+#Test Template     HttpApi
+Suite Setup
+
+*** Test Cases ***
+case1
+    [Documentation]    忘记密码重置密码的手机号一天最多发10条短信
+    [Tags]    Level1
+    [Setup]     delete_redis_password_phone_sms    ${Newphone1}
+    ${index}    Set Variable    0
+    :FOR    ${index}    IN RANGE    10
+    \    forget and checkCode    ${Newphone1}
+    HttpApi    /api/userAuth/sendMobileCode    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"mobile":"${Newphone1}","checkCode":"${phone_aes}"}    None    None    您获取验证码的次数过于频繁
+    [Teardown]     delete_redis_password_phone_sms    ${Newphone1}
+
+

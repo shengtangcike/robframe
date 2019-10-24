@@ -1,0 +1,33 @@
+*** Settings ***
+Resource     ../../../../config_file/Data.txt
+Resource     ../../../${data_env}/resource.txt
+Resource     ../../../keyword/keyword.txt
+Library    lib
+Test Template     HttpApi
+Suite Setup     login and checkVerificationCode    ${Newphone1}
+
+*** Test Cases ***
+case1
+    [Documentation]    验证码为空
+    [Tags]    Level2
+    /api/userRegister/updatePhone    post    {"Content-Type": "application/x-www-form-urlencoded","accessToken":"${token}"}    {"userId":"${userId}","mobile":"${Newphone2}","smsCheckCode":""}    None    None    验证码不能为空
+case2
+    [Documentation]    验证码错误
+    [Tags]    Level2
+    /api/userRegister/updatePhone    post    {"Content-Type": "application/x-www-form-urlencoded","accessToken":"${token}"}    {"userId":"${userId}","mobile":"${Newphone2}","smsCheckCode":"123456"}    None    None    验证码错误
+case3
+    [Documentation]    手机号为空
+    [Tags]    Level1
+    /api/userRegister/updatePhone    post    {"Content-Type": "application/x-www-form-urlencoded","accessToken":"${token}"}    {"userId":"${userId}","mobile":"","smsCheckCode":"${smscheckcode}"}    None    None    手机号码格式错误
+case4
+    [Documentation]    手机号码格式错误
+    [Tags]    Level2
+    /api/userRegister/updatePhone    post    {"Content-Type": "application/x-www-form-urlencoded","accessToken":"${token}"}    {"userId":"${userId}","mobile":"33445566","smsCheckCode":"${smscheckcode}"}    None    None    手机号码格式错误
+case5
+    [Documentation]    不传mobile字段
+    [Tags]    Level3
+    /api/userRegister/updatePhone    post    {"Content-Type": "application/x-www-form-urlencoded","accessToken":"${token}"}    {"userId":"${userId}","smsCheckCode":""}    None    None    parameter 'mobile' is not present
+case6
+    [Documentation]    不传smsCheckCode字段
+    [Tags]    Level3
+    /api/userRegister/updatePhone    post    {"Content-Type": "application/x-www-form-urlencoded","accessToken":"${token}"}    {"userId":"${userId}","mobile":"${Newphone2}"}    None    None    parameter 'smsCheckCode' is not present

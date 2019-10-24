@@ -1,0 +1,4 @@
+*** Test Cases ***
+Case2
+    [Tags]    rob
+    log    Hello World

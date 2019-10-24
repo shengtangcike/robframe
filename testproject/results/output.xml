@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 3.0.4 (Python 3.5.2 on win32)" generated="20181011 15:21:59.154">
+<suite name="Testsuite1" source="D:\PyWorkSpace\rob\testproject\testsuite1.txt" id="s1">
+<test name="case1" id="s1-t1">
+<kw library="BuiltIn" name="Log">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>Hello World</arg>
+</arguments>
+<msg timestamp="20181011 15:21:59.189" level="INFO">Hello World</msg>
+<status endtime="20181011 15:21:59.190" status="PASS" starttime="20181011 15:21:59.189"></status>
+</kw>
+<kw library="BuiltIn" name="Log">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${var}</arg>
+</arguments>
+<msg timestamp="20181011 15:21:59.190" level="INFO">value</msg>
+<status endtime="20181011 15:21:59.190" status="PASS" starttime="20181011 15:21:59.190"></status>
+</kw>
+<kw library="BuiltIn" name="Log Many">
+<doc>Logs the given messages as separate entries using the INFO level.</doc>
+<arguments>
+<arg>${listvar}</arg>
+</arguments>
+<msg timestamp="20181011 15:21:59.190" level="INFO">['a', 'b', 'c', 'd']</msg>
+<status endtime="20181011 15:21:59.190" status="PASS" starttime="20181011 15:21:59.190"></status>
+</kw>
+<kw library="BuiltIn" name="Log">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>%{TEMP}</arg>
+</arguments>
+<msg timestamp="20181011 15:21:59.190" level="INFO">C:\Users\WIN10\AppData\Local\Temp</msg>
+<status endtime="20181011 15:21:59.190" status="PASS" starttime="20181011 15:21:59.190"></status>
+</kw>
+<kw library="BuiltIn" name="Set Variable">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>abc</arg>
+</arguments>
+<assign>
+<var>${var2}</var>
+</assign>
+<msg timestamp="20181011 15:21:59.191" level="INFO">${var2} = abc</msg>
+<status endtime="20181011 15:21:59.191" status="PASS" starttime="20181011 15:21:59.190"></status>
+</kw>
+<kw library="BuiltIn" name="Set Variable If">
+<doc>Sets variable based on the given condition.</doc>
+<arguments>
+<arg>'${var2}'=='abc'</arg>
+<arg>ddd</arg>
+<arg>eee</arg>
+</arguments>
+<assign>
+<var>${var3}</var>
+</assign>
+<msg timestamp="20181011 15:21:59.191" level="INFO">${var3} = ddd</msg>
+<status endtime="20181011 15:21:59.191" status="PASS" starttime="20181011 15:21:59.191"></status>
+</kw>
+<kw library="BuiltIn" name="Get Length">
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<arguments>
+<arg>${var2}</arg>
+</arguments>
+<assign>
+<var>${getvar1}</var>
+</assign>
+<msg timestamp="20181011 15:21:59.191" level="INFO">Length is 3</msg>
+<msg timestamp="20181011 15:21:59.191" level="INFO">${getvar1} = 3</msg>
+<status endtime="20181011 15:21:59.191" status="PASS" starttime="20181011 15:21:59.191"></status>
+</kw>
+<kw library="BuiltIn" name="Get Time">
+<doc>Returns the given time in the requested format.</doc>
+<assign>
+<var>${getvar2}</var>
+</assign>
+<msg timestamp="20181011 15:21:59.192" level="INFO">${getvar2} = 2018-10-11 15:21:59</msg>
+<status endtime="20181011 15:21:59.192" status="PASS" starttime="20181011 15:21:59.191"></status>
+</kw>
+<status endtime="20181011 15:21:59.192" critical="yes" status="PASS" starttime="20181011 15:21:59.189"></status>
+</test>
+<test name="case2" id="s1-t2">
+<kw library="BuiltIn" name="Create List">
+<doc>Returns a list containing given items.</doc>
+<arguments>
+<arg>1</arg>
+<arg>2</arg>
+<arg>3</arg>
+<arg>4</arg>
+</arguments>
+<assign>
+<var>@{listvar2}</var>
+</assign>
+<msg timestamp="20181011 15:21:59.192" level="INFO">@{listvar2} = [ 1 | 2 | 3 | 4 ]</msg>
+<status endtime="20181011 15:21:59.192" status="PASS" starttime="20181011 15:21:59.192"></status>
+</kw>
+<kw library="BuiltIn" name="Log">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>@{listvar2}[1]</arg>
+</arguments>
+<msg timestamp="20181011 15:21:59.193" level="INFO">2</msg>
+<status endtime="20181011 15:21:59.193" status="PASS" starttime="20181011 15:21:59.192"></status>
+</kw>
+<kw library="BuiltIn" name="Log">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${listvar2[1]}</arg>
+</arguments>
+<msg timestamp="20181011 15:21:59.193" level="INFO">2</msg>
+<status endtime="20181011 15:21:59.193" status="PASS" starttime="20181011 15:21:59.193"></status>
+</kw>
+<status endtime="20181011 15:21:59.193" critical="yes" status="PASS" starttime="20181011 15:21:59.192"></status>
+</test>
+<status endtime="20181011 15:21:59.193" status="PASS" starttime="20181011 15:21:59.157"></status>
+</suite>
+<statistics>
+<total>
+<stat pass="2" fail="0">Critical Tests</stat>
+<stat pass="2" fail="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="2" fail="0" name="Testsuite1" id="s1">Testsuite1</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

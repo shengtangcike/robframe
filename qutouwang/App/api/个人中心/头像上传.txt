@@ -1,0 +1,15 @@
+*** Settings ***
+Resource     ../../../../config_file/Data.txt
+Resource     ../../../${data_env}/resource.txt
+Resource     ../../../keyword/keyword.txt
+Library    lib
+#Test Template     HttpApi
+Suite Setup
+
+*** Test Cases ***
+case1
+    [Documentation]    上传用户头像接口
+    [Tags]    Level1
+    uploadheadImg    ${Newphone1}     ${Newphone1password}
+
+

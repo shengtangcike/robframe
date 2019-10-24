@@ -1,0 +1,29 @@
+*** Settings ***
+Resource     ../../../../config_file/Data.txt
+Resource     ../../../${data_env}/resource.txt
+Resource     ../../../keyword/keyword.txt
+Library    lib
+Test Template     HttpApi
+Suite Setup
+
+*** Test Cases ***
+case1
+    [Documentation]    提现接口
+    [Tags]    Level1
+    /api/userAccountInfo/withdraw    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"userId":"1810251700531807321633","equipmentType":"app","amount":"200"}    ${thelenderphone}    ${thelenderphone_pwd}    weburl
+case2
+    [Documentation]    提现接口金额为空
+    [Tags]    Level2
+    /api/userAccountInfo/withdraw    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"userId":"1810251700531807321633","equipmentType":"app","amount":""}    ${thelenderphone}    ${thelenderphone_pwd}    金额不能为空
+case3
+    [Documentation]    提现接口金额为字母
+    [Tags]    Level2
+    /api/userAccountInfo/withdraw    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"userId":"1810251700531807321633","equipmentType":"app","amount":"aa"}    ${thelenderphone}    ${thelenderphone_pwd}    "code":-1
+case4
+    [Documentation]    提现接口金额为小数100.1
+    [Tags]    Level2
+    /api/userAccountInfo/withdraw    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"userId":"1810251700531807321633","equipmentType":"app","amount":"100.1"}    ${thelenderphone}    ${thelenderphone_pwd}    weburl
+case5
+    [Documentation]    提现接口金额为小于50
+    [Tags]    Level2
+    /api/userAccountInfo/withdraw    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"userId":"1810251700531807321633","equipmentType":"app","amount":"10.1"}    ${thelenderphone}    ${thelenderphone_pwd}    最低50元起

@@ -1,0 +1,13 @@
+*** Settings ***
+Resource     ../../../../config_file/Data.txt
+Resource     ../../../${data_env}/resource.txt
+Resource     ../../../keyword/keyword.txt
+Library    lib
+Test Template     HttpApi
+Suite Setup     
+
+*** Test Cases ***
+case1
+    [Documentation]    获取图形验证码
+    [Tags]    Level1
+    /api/userAuth/getImg    post    {"Content-Type": "application/x-www-form-urlencoded"}    None    None    None    imgPath

@@ -1,0 +1,37 @@
+*** Settings ***
+Resource     ../../../../config_file/Data.txt
+Resource     ../../../${data_env}/resource.txt
+Resource     ../../../keyword/keyword.txt
+Library    lib
+Test Template     HttpApi
+Suite Setup     
+
+*** Test Cases ***
+case1
+    [Documentation]    修改密码
+    [Tags]    Level1
+    /api/userAuth/modifyPwd    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"userId":"12345","password":"${Newphone1_psw}","newPassword":"${Newphone1_psw}"}    ${Newphone1}    ${Newphone1password}    "code":0
+case2
+    [Documentation]    修改密码12345678
+    [Tags]    Level2
+    /api/userAuth/modifyPwd    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"userId":"12345","password":"${Newphone1_psw1}","newPassword":"${Newphone1_psw1}"}    ${Newphone1}    ${Newphone1password}    密码须为8~16位英文、数字或下划线组合
+case3
+    [Documentation]    修改密码a12345
+    [Tags]    Level2
+    /api/userAuth/modifyPwd    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"userId":"12345","password":"${Newphone1_psw2}","newPassword":"${Newphone1_psw2}"}    ${Newphone1}    ${Newphone1password}    密码须为8~16位英文、数字或下划线组合
+case4
+    [Documentation]    修改密码a1234567890123456
+    [Tags]    Level2
+    /api/userAuth/modifyPwd    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"userId":"12345","password":"${Newphone1_psw3}","newPassword":"${Newphone1_psw3}"}    ${Newphone1}    ${Newphone1password}    密码须为8~16位英文、数字或下划线组合
+case5
+    [Documentation]    修改密码密码为空
+    [Tags]    Level2
+    /api/userAuth/modifyPwd    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"userId":"12345","password":"${Newphone1_psw4}","newPassword":"${Newphone1_psw4}"}    ${Newphone1}    ${Newphone1password}    密码须为8~16位英文、数字或下划线组合
+case6
+    [Documentation]    修改密码不传password(password必传)
+    [Tags]    Level3
+    /api/userAuth/modifyPwd    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"userId":"12345","newPassword":"${Newphone1_psw}"}    ${Newphone1}    ${Newphone1password}    "code":-1
+case7
+    [Documentation]    修改密码不传newPassword(newPassword必传)
+    [Tags]    Level3
+    /api/userAuth/modifyPwd    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"userId":"12345","password":"${Newphone1_psw}"}    ${Newphone1}    ${Newphone1password}    "code":-1

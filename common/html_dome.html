@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #result_table {
+            width: 80%;
+            border-collapse: collapse;
+            border: 1px solid #777;
+        }
+        #header_row {
+            font-weight: bold;
+            color: white;
+            background-color: #777;
+        }
+        .passClass {
+            background-color: %colour;
+        }
+        .failClass {
+            background-color: #c60;#6c6
+        }
+        #total_row {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="heading"><h1>去投网2.0接口测试报告</h1><p class="attribute"><strong>Start Time:</strong> %Starttime</p><p class="attribute"><strong>Duration:</strong> ———</p><p class="attribute"><strong>Status:</strong> Pass %Pass Fail %Fail</p><p class="description">去投网2.0接口测试</p></div>
+    <!--==================================================================================-->
+    <table id="result_table">
+        <tbody>
+            <tr id="header_row">
+                <td>Test Group/Test case</td>
+                <td>Count</td>
+                <td>Pass</td>
+                <td>Fail</td>
+                <td>Error</td>
+            </tr>
+            <tr class="passClass">
+                <td>test_result</td>
+                <td>%Count</td>
+                <td>%Pass</td>
+                <td>%Fail</td>
+                <td>0</td>
+            </tr>
+            <tr id="total_row">
+                <td>Total</td>
+                <td>%Count</td>
+                <td>%Pass</td>
+                <td>%Fail</td>
+                <td>0</td>
+            </tr>
+        </tbody>
+    </table>
+    <div style="height: 40px"></div>
+<script>
+    var color='red';
+    if(status===2){
+        color = 'green';
+    }
+
+
+</script>
+</body>
+
+</html>

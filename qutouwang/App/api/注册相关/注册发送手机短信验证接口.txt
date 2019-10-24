@@ -1,0 +1,37 @@
+*** Settings ***
+Resource     ../../../../config_file/Data.txt
+Resource     ../../../${data_env}/resource.txt
+Resource     ../../../keyword/keyword.txt
+Library    lib
+Test Template     HttpApi
+Suite Setup     getCheckImg    ${Newphone2}
+
+*** Test Cases ***
+case1
+    [Documentation]    请求图形验证码后发短信
+    [Tags]    Level1
+    /api/userRegister/sendMobileCode    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"mobile": "${Newphone2}","smsCheckCode":"${Newphone2_aes}"}    None    None    "code":0
+case2
+    [Documentation]    手机号码格式错误
+    [Tags]    Level2
+    /api/userRegister/sendMobileCode    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"mobile": "22222222222","smsCheckCode":"cf7d208f8d6965e69168e578c0831ac8"}    None    None    手机号码格式错误
+case3
+    [Documentation]    手机号为空
+    [Tags]    Level2
+    /api/userRegister/sendMobileCode    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"mobile": "","smsCheckCode":""}    None    None    手机号不能为空
+case4
+    [Documentation]    smsCheckCode为空
+    [Tags]    Level2
+    /api/userRegister/sendMobileCode    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"mobile": "${Newphone2}","smsCheckCode":""}    None    None    "code":-1
+case5
+    [Documentation]    smsCheckCode错误
+    [Tags]    Level2
+    /api/userRegister/sendMobileCode    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"mobile": "${Newphone2}","smsCheckCode":"ddsdsd1212"}    None    None    "code":-1
+case6
+    [Documentation]    不传smsCheckCode字段(smsCheckCode必传)
+    [Tags]    Level3
+    /api/userRegister/sendMobileCode    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"mobile": "${Newphone2}"}    None    None    Required String parameter 'smsCheckCode' is not present
+case7
+    [Documentation]    不传mobile字段(mobile必传)
+    [Tags]    Level3
+    /api/userRegister/sendMobileCode    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"smsCheckCode":"${Newphone2_aes}"}    None    None    手机号不能为空

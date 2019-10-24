@@ -1,0 +1,13 @@
+*** Settings ***
+Resource     ../../../../config_file/Data.txt
+Resource     ../../../${data_env}/resource.txt
+Resource     ../../../keyword/keyword.txt
+Library    lib
+Test Template     HttpApi
+Suite Setup     
+
+*** Test Cases ***
+case1
+    [Documentation]    pc查看公告详情
+    [Tags]    Level1
+    /api/home/pc/findPcNoticeDetail    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"oid":"5600000026"}    None    None    "code":0

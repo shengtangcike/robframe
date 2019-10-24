@@ -1,0 +1,17 @@
+*** Settings ***
+Resource     ../../../../config_file/Data.txt
+Resource     ../../../${data_env}/resource.txt
+Resource     ../../../keyword/keyword.txt
+Library    lib
+Test Template     HttpApi
+Suite Setup     
+
+*** Test Cases ***
+case1
+    [Documentation]    获取站内信批量已读
+    [Tags]    Level1
+    /api/userMessage/batchRead    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"userId":"9","ids":"-1"}    ${thelenderphone}    ${thelenderphone_pwd}    "code":0
+case2
+    [Documentation]    获取站内信某一条已读
+    [Tags]    Level2
+    /api/userMessage/batchRead    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"userId":"9","ids":"${msgId} "}    ${thelenderphone}    ${thelenderphone_pwd}    "code":0

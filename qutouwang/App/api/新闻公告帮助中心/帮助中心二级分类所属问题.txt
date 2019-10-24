@@ -1,0 +1,15 @@
+*** Settings ***
+Resource     ../../../../config_file/Data.txt
+Resource     ../../../${data_env}/resource.txt
+Resource     ../../../keyword/keyword.txt
+Library    lib
+Test Template     HttpApi
+Suite Setup     
+
+*** Test Cases ***
+
+
+case2
+    [Documentation]    查询帮助中心绑卡的所属问题
+    [Tags]    Level1
+    /api/home/pc/findHelpCenterList    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"helpType":"47"}    None    None    "code":0

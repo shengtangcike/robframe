@@ -1,0 +1,13 @@
+*** Settings ***
+Resource     ../../../../config_file/Data.txt
+Resource     ../../../${data_env}/resource.txt
+Resource     ../../../keyword/keyword.txt
+Library    lib
+Test Template     HttpApi
+Suite Setup     
+
+*** Test Cases ***
+case1
+    [Documentation]    查询法律法规列表信息
+    [Tags]    Level1
+    /api/platform/findLawsReglList    post    {"Content-Type": "application/x-www-form-urlencoded"}    None    None    None    "code":0

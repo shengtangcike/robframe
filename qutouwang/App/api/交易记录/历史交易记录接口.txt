@@ -1,0 +1,37 @@
+*** Settings ***
+Resource     ../../../../config_file/Data.txt
+Resource     ../../../${data_env}/resource.txt
+Resource     ../../../keyword/keyword.txt
+Library    lib
+Test Template     HttpApi
+Suite Setup     
+
+*** Test Cases ***
+case1
+    [Documentation]    充值记录
+    [Tags]    Level1
+    /api/tradeRecord/findUserTradeRecordOld    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"userId": "9","cashType": "1"}    ${Newphone1}    ${Newphone1password}    查询成功
+case2
+    [Documentation]    投资记录
+    [Tags]    Level2
+    /api/tradeRecord/findUserTradeRecordOld   post    {"Content-Type": "application/x-www-form-urlencoded"}    {"userId": "9","cashType": "2"}    ${Newphone1}    ${Newphone1password}    查询成功
+case3
+    [Documentation]    回款记录
+    [Tags]    Level2
+    /api/tradeRecord/findUserTradeRecordOld    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"userId": "9","cashType": "3"}    ${Newphone1}    ${Newphone1password}    查询成功
+case4
+    [Documentation]    提现记录
+    [Tags]    Level2
+    /api/tradeRecord/findUserTradeRecordOld    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"userId": "9","cashType": "4"}    ${Newphone1}    ${Newphone1password}    查询成功
+case5
+    [Documentation]    奖励记录
+    [Tags]    Level2
+    /api/tradeRecord/findUserTradeRecordOld    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"userId": "9","cashType": "5"}    ${Newphone1}    ${Newphone1password}    查询成功
+case6
+    [Documentation]    手续费记录
+    [Tags]    Level2
+    /api/tradeRecord/findUserTradeRecordOld    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"userId": "9","cashType": "6"}    ${Newphone1}    ${Newphone1password}    查询成功
+case7
+    [Documentation]    其他记录
+    [Tags]    Level2
+    /api/tradeRecord/findUserTradeRecordOld    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"userId": "9","cashType": "7"}    ${Newphone1}    ${Newphone1password}    查询成功

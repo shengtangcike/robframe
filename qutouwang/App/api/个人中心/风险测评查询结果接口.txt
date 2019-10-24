@@ -1,0 +1,13 @@
+*** Settings ***
+Resource     ../../../../config_file/Data.txt
+Resource     ../../../${data_env}/resource.txt
+Resource     ../../../keyword/keyword.txt
+Library    lib
+Test Template     HttpApi
+Suite Setup     
+
+*** Test Cases ***
+case1
+    [Documentation]    风险评估测评查询结果
+    [Tags]    Level1
+    /api/risk/findRiskResult    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"userId":"9"}    ${Newphone1}    ${Newphone1password}    "code":0

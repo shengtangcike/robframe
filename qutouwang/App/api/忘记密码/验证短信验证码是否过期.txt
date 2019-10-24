@@ -1,0 +1,29 @@
+*** Settings ***
+Resource     ../../../../config_file/Data.txt
+Resource     ../../../${data_env}/resource.txt
+Resource     ../../../keyword/keyword.txt
+Library    lib
+Test Template     HttpApi
+Suite Setup     forget and checkCode    ${Newphone1}
+
+*** Test Cases ***
+case1
+    [Documentation]    短信验证码正确
+    [Tags]    Level1
+    /api/userAuth/checkCode    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"mobile": "${Newphone1}","smsCheckCode":"${smscheckcode}"}    None    None    "code":0
+case2
+    [Documentation]    短信验证码为空
+    [Tags]    Level2
+    /api/userAuth/checkCode    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"mobile": "${Newphone1}","smsCheckCode":""}    None    None    验证码错误
+case3
+    [Documentation]    短信验证码错误
+    [Tags]    Level2
+    /api/userAuth/checkCode    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"mobile": "${Newphone1}","smsCheckCode":"123456"}    None    None    验证码错误
+case4
+    [Documentation]    不传mobile(mobile必传)
+    [Tags]    Level3
+    /api/userAuth/checkCode    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"smsCheckCode":"123456"}    None    None    parameter 'mobile' is not present
+case5
+    [Documentation]    不传smsCheckCode(smsCheckCode必传)
+    [Tags]    Level3
+    /api/userAuth/checkCode    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"smsCheckCode":"123456"}    None    None    parameter 'mobile' is not present

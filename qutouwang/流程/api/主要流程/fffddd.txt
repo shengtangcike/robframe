@@ -1,0 +1,23 @@
+*** Settings ***
+Library    lib
+Suite Setup       ${var}=    applogin
+#Suite Teardown    撒大苏打
+
+*** Test Cases ***
+
+#case1
+#	[Documentation]  测试样例1
+#	[Tags]  normal
+#    ${var}=    applogin
+##    set global variable    ${var}
+##    appselect    ${var}
+case2
+    [Documentation]  测试样例2
+	[Tags]  normal
+	appselect    ${var}
+
+
+*** Keywords ***
+Login With
+    ${var}=    applogin
+    set global variable    ${var}

@@ -1,0 +1,13 @@
+*** Settings ***
+Resource     ../../../../config_file/Data.txt
+Resource     ../../../${data_env}/resource.txt
+Resource     ../../../keyword/keyword.txt
+Library    lib
+Test Template     HttpApi
+Suite Setup     
+
+*** Test Cases ***
+case1
+    [Documentation]    查询用户的邀请记录
+    [Tags]    Level1
+    /api/home/app/findAppInvitationRecord    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"userId":"9"}    ${thelenderphone}    ${thelenderphone_pwd}    "code":0

@@ -1,0 +1,14 @@
+*** Settings ***
+Resource     ../../../../config_file/Data.txt
+Resource     ../../../${data_env}/resource.txt
+Resource     ../../../keyword/keyword.txt
+Library    lib
+Test Template     HttpApi
+Suite Setup     
+
+*** Test Cases ***
+case1
+    [Documentation]    出借中的散标
+    [Tags]    Level1
+    /api/userScattered/findReturnPlanDetail    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"userId":"12345","pageNum":"1","pageSize":"7","orderId":"${order_id}"}    ${thelenderphone}    ${thelenderphone_pwd}    "code":0
+

@@ -1,0 +1,15 @@
+*** Settings ***
+Resource     ../../../../config_file/Data.txt
+Resource     ../../../${data_env}/resource.txt
+Resource     ../../../keyword/keyword.txt
+Library    lib
+Test Template     HttpApi
+Suite Setup     
+
+*** Test Cases ***
+case1
+    [Documentation]    智享服务借款信息列表
+    [Tags]    Level1
+    /api/wisdomProduct/findLoanRecord    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"pageNum":"1","pageSize":"7"}    None    None    "code":0
+
+

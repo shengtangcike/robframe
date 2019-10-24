@@ -1,0 +1,67 @@
+*** Settings ***
+Library    lib
+
+*** Test Cases ***
+case1
+	[Documentation]  散标债转正常流程1.资产端推送债权到qtw借款端
+	[Tags]  normal
+	lib.HttpApiAssettodebit
+case2
+    [Documentation]  散标债转正常流程2.借款人签约
+	[Tags]  normal
+	lib.loanSignOperation
+case3
+	[Documentation]  散标债转正常流程3.qtw借款系统审核通过推送核心系统
+	[Tags]  normal
+	lib.debitcheck
+case4
+    [Documentation]  散标债转正常流程4.核心系统创建散标并发标
+	[Tags]  normal
+    lib.corecheckandfabiao
+case5
+    [Documentation]  散标债转正常流程5.资金Pc系统出借/满标
+	[Tags]  normal
+    lib.investbid
+case6
+    [Documentation]  散标债转正常流程6.满标后放款
+	[Tags]  normal
+    lib.lendingbid
+case7
+    [Documentation]  散标债转正常流程7.借款人Pc资金端正常还款还第一期
+	[Tags]  normal
+    lib.repaymentdebt    1
+case8
+    [Documentation]  散标债转正常流程8.核心系统手工跑定时任务回款给出借人回第一期
+	[Tags]  normal
+    lib.corereturnedmoney    1
+case9
+    [Documentation]  散标债转正常流程9.Pc资金端，借款人第二期逾期，逾期1天
+	[Tags]  normal
+    lib.overdue    2    -1
+case10
+    [Documentation]  散标债转正常流程10.Pc资金端，垫付机构没有垫付,还款人还款
+	[Tags]  normal
+    lib.repaymentdebt    2
+case11
+    [Documentation]  散标债转正常流程11.Pc资金端，借款人第三期逾期，逾期1天，垫付机构垫付
+	[Tags]  normal
+    lib.overdue    3    -1
+    lib.padpay    3
+case12
+    [Documentation]  散标债转正常流程12.Pc资金端，借款人第三期逾期，借款人在宽限期内还款
+	[Tags]  normal
+    lib.repaymentdebt    3
+case13
+    [Documentation]  散标债转正常流程13.Pc资金端，借款人第四期逾期，逾期8天，垫付机构垫付
+	[Tags]  normal
+    lib.overdue    4    -8
+    lib.padpay    4
+case14
+    [Documentation]  散标债转正常流程12.Pc资金端，借款人第三期逾期，借款人在逾期后还款
+	[Tags]  normal
+    lib.repaymentdebt    4
+case15
+    [Documentation]  散标债转正常流程15.Pc资金端，借款人全部提前还款，出借人全部回款，交易结束
+	[Tags]  normal
+    lib.earlyrepaymentoperation
+

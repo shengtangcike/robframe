@@ -1,0 +1,19 @@
+*** Settings ***
+Resource     ../../../../config_file/Data.txt
+Resource     ../../../${data_env}/resource.txt
+Resource     ../../../keyword/keyword.txt
+Library    lib
+Suite Setup
+
+*** Test Cases ***
+case1
+    [Documentation]    修改手机号
+    [Tags]    Level1
+    login updatePhone and sendCode    ${Newphone1}    ${Newphone2}
+    HttpApi    /api/userRegister/updatePhone    post    {"Content-Type": "application/x-www-form-urlencoded","accessToken":"${token}"}    {"userId":"${userId}","mobile":"${Newphone2}","smsCheckCode":"${smscheckcode}"}    None    None    "code":0
+    sleep    10
+case2
+    [Documentation]    手机号改回来
+    [Tags]    Level1
+    login updatePhone and sendCode    ${Newphone2}    ${Newphone1}
+    HttpApi    /api/userRegister/updatePhone    post    {"Content-Type": "application/x-www-form-urlencoded","accessToken":"${token}"}    {"userId":"${userId}","mobile":"${Newphone1}","smsCheckCode":"${smscheckcode}"}    None    None    "code":0

@@ -1,0 +1,13 @@
+*** Settings ***
+Resource     ../../../../config_file/Data.txt
+Resource     ../../../${data_env}/resource.txt
+Resource     ../../../keyword/keyword.txt
+Library    lib
+Test Template     HttpApi
+Suite Setup     
+
+*** Test Cases ***
+case1
+    [Documentation]    查询用户可以余额
+    [Tags]    Level1
+    /api/userAccountInfo/getAccountBalance    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"userId":"12345"}    ${Newphone1}    ${Newphone1password}    "code":0

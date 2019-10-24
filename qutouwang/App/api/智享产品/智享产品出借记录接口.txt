@@ -1,0 +1,15 @@
+*** Settings ***
+Resource     ../../../../config_file/Data.txt
+Resource     ../../../${data_env}/resource.txt
+Resource     ../../../keyword/keyword.txt
+Library    lib
+Test Template     HttpApi
+Suite Setup     
+
+*** Test Cases ***
+case1
+    [Documentation]    智享服务出借记录
+    [Tags]    Level1
+    /api/investWisdom/findLendList    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"productNo":"${bidNocore_zx}","pageNum":"1","pageSize":"7"}    None    None    "code":0
+
+

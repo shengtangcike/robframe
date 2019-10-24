@@ -1,0 +1,13 @@
+*** Settings ***
+Resource     ../../../../config_file/Data.txt
+Resource     ../../../${data_env}/resource.txt
+Resource     ../../../keyword/keyword.txt
+Library    lib
+Test Template     HttpApi
+Suite Setup     
+
+*** Test Cases ***
+case1
+    [Documentation]    风险评估测评接口
+    [Tags]    Level1
+    /api/risk/saveRisk    post    {"Content-Type": "application/json"}    {"userId":"${Newphone1_userId}","totalScore":48,"questions":[{"question":{"value":"1-3","score":3}},{"question":{"value":"2-1","score":1}},{"question":{"value":"3-2","score":2}},{"question":{"value":"4-4","score":4}},{"question":{"value":"5-3","score":3}},{"question":{"value":"6-1","score":1}},{"question":{"value":"7-4","score":4}},{"question":{"value":"8-4","score":4}},{"question":{"value":"9-4","score":4}},{"question":{"value":"10-5","score":5}},{"question":{"value":"11-4","score":4}},{"question":{"value":"12-5","score":5}},{"question":{"value":"13-4","score":4}},{"question":{"value":"14-4","score":4}}]}    ${Newphone1}    ${Newphone1password}    测评成功

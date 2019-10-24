@@ -1,0 +1,34 @@
+*** Settings ***
+Resource     ../../../../config_file/Data.txt
+Resource     ../../../${data_env}/resource.txt
+Resource     ../../../keyword/keyword.txt
+Library    lib
+Test Template     HttpApi
+Suite Setup     
+
+*** Test Cases ***
+case1
+    [Documentation]   查询全部
+    [Tags]    Level1
+    /api/userWisdom/findIntelligentBidList    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"userId":"12345","pageNum":"1","pageSize":"7"}    ${thelenderphone}    ${thelenderphone_pwd}    "code":0
+case2
+    [Documentation]   募集中
+    [Tags]    Level2
+    /api/userWisdom/findIntelligentBidList    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"userId":"12345","pageNum":"1","pageSize":"7","queryType":"1"}    ${thelenderphone}    ${thelenderphone_pwd}    "code":0
+case3
+    [Documentation]   已满标
+    [Tags]    Level2
+    /api/userWisdom/findIntelligentBidList    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"userId":"12345","pageNum":"1","pageSize":"7","queryType":"2"}    ${thelenderphone}    ${thelenderphone_pwd}    "code":0
+case4
+    [Documentation]   授权服务中
+    [Tags]    Level2
+    /api/userWisdom/findIntelligentBidList    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"userId":"12345","pageNum":"1","pageSize":"7","queryType":"3"}    ${thelenderphone}    ${thelenderphone_pwd}    "code":0
+case5
+    [Documentation]   债权转让中
+    [Tags]    Level2
+    /api/userWisdom/findIntelligentBidList    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"userId":"12345","pageNum":"1","pageSize":"7","queryType":"4"}    ${thelenderphone}    ${thelenderphone_pwd}    "code":0
+case6
+    [Documentation]   已退出
+    [Tags]    Level2
+    /api/userWisdom/findIntelligentBidList    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"userId":"12345","pageNum":"1","pageSize":"7","queryType":"5"}    ${thelenderphone}    ${thelenderphone_pwd}    "code":0
+

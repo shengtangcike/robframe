@@ -1,0 +1,29 @@
+*** Settings ***
+Resource     ../../../../config_file/Data.txt
+Resource     ../../../${data_env}/resource.txt
+Resource     ../../../keyword/keyword.txt
+Library    lib
+Test Template     HttpApi
+Suite Setup     
+
+*** Test Cases ***
+case1
+    [Documentation]    密码为空
+    [Tags]    Level2
+    /api/userRegister/checkPwd    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"userId":"9","mobile":"${Newphone1}","password":"${Newphone1_psw1}"}    ${Newphone1}    ${Newphone1password}    登录密码错误
+case2
+    [Documentation]    密码错误
+    [Tags]    Level2
+    /api/userRegister/checkPwd    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"userId":"9","mobile":"${Newphone1}","password":"${Newphone1_psw2}"}    ${Newphone1}    ${Newphone1password}    登录密码错误
+case3
+    [Documentation]    密码正确
+    [Tags]    Level1
+    /api/userRegister/checkPwd    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"userId":"9","mobile":"${Newphone1}","password":"${Newphone1_psw}"}    ${Newphone1}    ${Newphone1password}    "code":0
+case4
+    [Documentation]    不传mobile字段
+    [Tags]    Level3
+    /api/userRegister/checkPwd    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"userId":"9","password":"${Newphone1_psw3}"}    ${Newphone1}    ${Newphone1password}    parameter 'mobile' is not present
+case5
+    [Documentation]    不传password字段
+    [Tags]    Level3
+    /api/userRegister/checkPwd    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"userId":"9","mobile":"${Newphone1}"}    ${Newphone1}    ${Newphone1password}    parameter 'password' is not present

@@ -1,0 +1,31 @@
+*** Settings ***
+Resource     ../../../../config_file/Data.txt
+Resource     ../../../${data_env}/resource.txt
+Resource     ../../../keyword/keyword.txt
+Library    lib
+#Test Template     HttpApi
+Suite Setup
+
+*** Test Cases ***
+case1
+    [Documentation]    用户绑定邮箱
+    [Tags]    Level1
+    log     用户邮箱认证
+    sql_update     UPDATE qtw_invest_db.p2p_user_reg_info SET active_flag = "0" WHERE cif_account = "${Newphone1}"
+    sql_update     UPDATE qtw_invest_db.p2p_user_reg SET email = "" WHERE cif_account = "${Newphone1}"
+    HttpApi     /api/userAuthMailbox/sendMailboxCode    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"userId":"111222","email":"li20181124150@qq.com"}    ${Newphone1}    ${Newphone1password}    "code":0
+    log    邮箱校验
+    ${result}=     select_return_A_data     SELECT mes_body FROM qtw_invest_db.p2p_message_record WHERE delete_status='1' ORDER BY send_time DESC LIMIT 1
+    ${code}=    regular    '(.+?)',    ${result}
+    HttpApi     /api/userAuthMailbox/authkMailbox    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"userId": "111222", "email": "li20181124150@qq.com","emailCode":"${code}"}    ${Newphone1}    ${Newphone1password}    "code":0
+    log     修改邮箱
+    HttpApi     /api/userAuthMailbox/sendMailboxCode    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"userId":"111222","email":"852741963hh@qq.com"}    ${Newphone1}    ${Newphone1password}    "code":0
+    ${result}=     select_return_A_data     SELECT mes_body FROM qtw_invest_db.p2p_message_record WHERE delete_status='1' ORDER BY send_time DESC LIMIT 1
+    ${code}=    regular    '(.+?)',    ${result}
+    HttpApi     /api/userAuthMailbox/modifyEmail    post    {"Content-Type": "application/x-www-form-urlencoded"}     {"userId": "1122","email":"852741963hh@qq.com","password":"${Newphone1_psw}","emailCode":"${code}"}    ${Newphone1}    ${Newphone1password}    "code":0
+
+
+
+
+
+

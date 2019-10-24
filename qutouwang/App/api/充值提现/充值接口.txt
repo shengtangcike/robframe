@@ -1,0 +1,53 @@
+*** Settings ***
+Resource     ../../../../config_file/Data.txt
+Resource     ../../../${data_env}/resource.txt
+Resource     ../../../keyword/keyword.txt
+Library    lib
+#Test Template     HttpApi
+Suite Setup    clear redis recharge    ${thelenderphone}
+
+*** Test Cases ***
+case1
+    [Documentation]    App客户端充值
+    [Tags]    Level1
+    HttpApi    /api/userAccountInfo/recharge    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"userId":"1810251700531807321633","equipmentType":"app","amount":"20000"}    ${thelenderphone}    ${thelenderphone_pwd}    weburl
+case2
+    [Documentation]    Pc客户端充值
+    [Tags]    Level2
+    HttpApi    /api/userAccountInfo/recharge    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"userId":"1810251700531807321633","equipmentType":"pc","amount":"20000"}    ${thelenderphone}    ${thelenderphone_pwd}    weburl
+case3
+    [Documentation]    h5客户端充值
+    [Tags]    Level2
+    HttpApi    /api/userAccountInfo/recharge    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"userId":"1810251700531807321633","equipmentType":"h5","amount":"19000"}    ${thelenderphone}    ${thelenderphone_pwd}    weburl
+case4
+    [Documentation]    单笔限额超限
+    [Tags]    Level2
+    HttpApi    /api/userAccountInfo/recharge    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"userId":"1810251700531807321633","equipmentType":"app","amount":"50001"}    ${thelenderphone}    ${thelenderphone_pwd}    单笔充值金额超限
+case5
+    [Documentation]    单日限额超限
+    [Tags]    Level2
+    sleep  15
+    HttpApi    /api/userAccountInfo/recharge    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"userId":"1810251700531807321633","equipmentType":"app","amount":"10000"}    ${thelenderphone}    ${thelenderphone_pwd}    单日充值金额超限
+case6
+    [Documentation]    金额为空
+    [Tags]    Level2
+    HttpApi    /api/userAccountInfo/recharge    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"userId":"1810251700531807321633","equipmentType":"app","amount":""}    ${thelenderphone}    ${thelenderphone_pwd}    金额不能为空
+case7
+    [Documentation]    金额为字母
+    [Tags]    Level2
+    HttpApi    /api/userAccountInfo/recharge    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"userId":"1810251700531807321633","equipmentType":"app","amount":"aa"}    ${thelenderphone}    ${thelenderphone_pwd}    "code":-1
+case8
+    [Documentation]    金额为小数
+    [Tags]    Level2
+    HttpApi    /api/userAccountInfo/recharge    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"userId":"1810251700531807321633","equipmentType":"app","amount":"100.5"}    ${thelenderphone}    ${thelenderphone_pwd}    weburl
+case9
+    [Documentation]    amount字段不传
+    [Tags]    Level2
+    HttpApi    /api/userAccountInfo/recharge    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"userId":"1810251700531807321633","equipmentType":"app"}    ${thelenderphone}    ${thelenderphone_pwd}    金额不能为空
+case10
+    [Documentation]    借款人充值
+    [Tags]    Level2
+    HttpApi    /api/userAccountInfo/recharge    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"userId":"1810251700531807321633","equipmentType":"app","amount":"20000"}    ${theborrowerphone}    ${theborrowerphone_pwd}    weburl
+
+
+

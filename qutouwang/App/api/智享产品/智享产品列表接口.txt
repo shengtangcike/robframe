@@ -1,0 +1,15 @@
+*** Settings ***
+Resource     ../../../../config_file/Data.txt
+Resource     ../../../${data_env}/resource.txt
+Resource     ../../../keyword/keyword.txt
+Library    lib
+Test Template     HttpApi
+Suite Setup     
+
+*** Test Cases ***
+case1
+    [Documentation]    智享服务产品列表
+    [Tags]    Level1
+    /api/wisdomProduct/findWisdomProductList    post    {"Content-Type": "application/x-www-form-urlencoded"}    None    None    None    "code":0
+
+

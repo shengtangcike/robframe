@@ -1,0 +1,17 @@
+*** Settings ***
+Resource     ../../../../config_file/Data.txt
+Resource     ../../../${data_env}/resource.txt
+Resource     ../../../keyword/keyword.txt
+Library    lib
+Test Template     HttpApi
+Suite Setup     
+
+*** Test Cases ***
+case1
+    [Documentation]    app端查询公告列表
+    [Tags]    Level1
+    /api/home/app/findAppNoticeList    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"pageNum":"1","pageSize":"7"}    None    None    "code":0
+case2
+    [Documentation]    pc端查询公告列表
+    [Tags]    Level2
+    /api/home/pc/findPcNoticeList    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"pageNum":"1","pageSize":"7"}    None    None    "code":0

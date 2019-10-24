@@ -1,0 +1,13 @@
+*** Settings ***
+Resource     ../../../../config_file/Data.txt
+Resource     ../../../${data_env}/resource.txt
+Resource     ../../../keyword/keyword.txt
+Library    lib
+Test Template     HttpApi
+Suite Setup     
+
+*** Test Cases ***
+case1
+    [Documentation]    查询借款人借款记录信息
+    [Tags]    Level1
+    /api/loan/loanRecord    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"userId":"12345"}    ${theborrowerphone}    ${theborrowerphone_pwd}    "code":0

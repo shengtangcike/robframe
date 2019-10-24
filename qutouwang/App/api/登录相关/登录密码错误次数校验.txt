@@ -1,0 +1,23 @@
+*** Settings ***
+Resource     ../../../../config_file/Data.txt
+Resource     ../../../${data_env}/resource.txt
+Resource     ../../../keyword/keyword.txt
+Library    lib
+#Test Template     HttpApi
+Suite Setup
+
+*** Test Cases ***
+case1
+    [Documentation]    登录错误5次账户锁定20分钟，再登录错误锁定20分钟，再错误天无法登录，一共可以登错7次
+    [Tags]    Level1
+    [Setup]     delete loginerror num     ${Newphone3}
+    ${index}    Set Variable    0
+    :FOR    ${index}    IN RANGE    5
+    \    HttpApi    /api/userAuth/login    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"account": "${Newphone3}","password":"${Newphone3_psw}"}    None    None    密码错误
+    HttpApi    /api/userAuth/login    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"account": "${Newphone3}","password":"${Newphone3_psw}"}    None    None    您的账户已被锁定
+    sql_update    UPDATE qtw_invest_db.p2p_user_reg SET lock_off_time='2019-01-01 01:01:01' WHERE cif_account='${Newphone3}';
+    HttpApi    /api/userAuth/login    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"account": "${Newphone3}","password":"${Newphone3_psw}"}    None    None    密码错误
+    HttpApi    /api/userAuth/login    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"account": "${Newphone3}","password":"${Newphone3_psw}"}    None    None    您的账户已被锁定
+    sql_update    UPDATE qtw_invest_db.p2p_user_reg SET lock_off_time='2019-01-01 01:01:01' WHERE cif_account='${Newphone3}';
+    HttpApi    /api/userAuth/login    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"account": "${Newphone3}","password":"${Newphone3_psw}"}    None    None    密码错误
+    HttpApi    /api/userAuth/login    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"account": "${Newphone3}","password":"${Newphone3_psw}"}    None    None    您的密码输入错误次数过多，当天无法登录

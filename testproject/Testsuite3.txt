@@ -1,0 +1,15 @@
+*** Test Cases ***
+case1
+    #循环 FOR LOOP
+    :FOR    ${i}    IN RANGE    1    10
+    \    LOG    i=${i}
+    #循环in
+    @{listvar}    Create List    A    B    C
+    :FOR    ${n}    IN    @{listvar}
+    \    log    n=${n}
+    #分支语法
+    ${a}    Set Variable    0
+    ${b}    Set Variable    5
+    Run Keyword If    ${a}>1    log    1
+    ...    ELSE IF    ${b}<4    log    2
+    ...    ELSE    log    3

@@ -1,0 +1,17 @@
+*** Settings ***
+Resource     ../../../../config_file/Data.txt
+Resource     ../../../${data_env}/resource.txt
+Resource     ../../../keyword/keyword.txt
+Library    lib
+Test Template     HttpApi
+Suite Setup     
+
+*** Test Cases ***
+case1
+    [Documentation]    债转确认出借页面信息
+    [Tags]    Level1
+    /api/transferDebt/confirmTransferInvestShow    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"userId": "0","debtId":"${debt_id}"}    ${thelrecipientphone}    ${thelrecipientphone_pwd}    "code":0
+
+
+
+

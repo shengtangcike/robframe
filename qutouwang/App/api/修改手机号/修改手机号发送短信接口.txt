@@ -1,0 +1,25 @@
+*** Settings ***
+Resource     ../../../../config_file/Data.txt
+Resource     ../../../${data_env}/resource.txt
+Resource     ../../../keyword/keyword.txt
+Library    lib
+Test Template     HttpApi
+Suite Setup     
+
+*** Test Cases ***
+case1
+    [Documentation]    给老手机号发送验证码/出借人
+    [Tags]    Level1
+    /api/userRegister/checkPhone/sendVerificationCode    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"userId":"9","mobile":"${Newphone1}","aesMobile":"${Newphone1_aes}","messageType":"checkPhone"}    ${Newphone1}    ${Newphone1password}    "code":0
+case2
+    [Documentation]    给老手机号发送验证码不传mobile
+    [Tags]    Level3
+    /api/userRegister/checkPhone/sendVerificationCode    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"userId":"9","aesMobile":"${Newphone1_aes}","messageType":"checkPhone"}    ${Newphone1}    ${Newphone1password}    手机号不能为空
+case3
+    [Documentation]    给老手机号发送验证码不传aesmobile
+    [Tags]    Level3
+    /api/userRegister/checkPhone/sendVerificationCode    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"userId":"9","mobile":"${Newphone1}","messageType":"checkPhone"}    ${Newphone1}    ${Newphone1password}    parameter 'aesMobile' is not present
+case4
+    [Documentation]    给新手机号发送验证码/出借人
+    [Tags]    Level1
+    /api/userRegister/updatePhone/sendVerificationCode    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"userId":"9","mobile":"${Newphone2}","aesMobile":"${Newphone2_aes}","messageType":"updatePhone"}    ${Newphone1}    ${Newphone1password}    "code":0

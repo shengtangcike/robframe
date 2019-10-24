@@ -1,0 +1,24 @@
+*** Settings ***
+Resource    resource.txt
+Library    lib
+Test Template     lib.HttpApi
+
+
+*** Test Cases ***
+case1    #正常用例
+    [Tags]    case2_tag
+    [Documentation]    正常用例
+    http://192.168.1.42:81/hyzh-invest-ui-api/rest/api/userRegister/checkPhone    {"Content-Type": "application/x-www-form-urlencoded"}     {"mobile": "15700002211"}      正常
+case2    #手机号已注册
+    [Tags]    case2_tag
+    [Documentation]    手机号已注册
+    http://192.168.1.42:81/hyzh-invest-ui-api/rest/api/userRegister/checkPhone    {"Content-Type": "application/x-www-form-urlencoded"}     {"mobile": "15700000001"}      手机号已注册
+case3  #手机号格式错误
+    [Tags]    case2_tag
+    [Documentation]    手机号格式错误
+    http://192.168.1.42:81/hyzh-invest-ui-api/rest/api/userRegister/checkPhone    {"Content-Type": "application/x-www-form-urlencoded"}     {"mobile": "5258"}      手机号格式错误
+case4  #手机号格式错误
+    [Tags]    case2_tag
+    [Documentation]    手机号格式错误
+    http://192.168.1.42:81/hyzh-invest-ui-api/rest/api/userRegister/checkPhone    {"Content-Type": "application/x-www-form-urlencoded"}     {"mobile": "*&……%￥￥#@！"}      手机号格式错误
+

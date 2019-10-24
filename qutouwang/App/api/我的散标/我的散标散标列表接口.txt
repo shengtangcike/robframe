@@ -1,0 +1,44 @@
+*** Settings ***
+Resource     ../../../../config_file/Data.txt
+Resource     ../../../${data_env}/resource.txt
+Resource     ../../../keyword/keyword.txt
+Library    lib
+Test Template     HttpApi
+Suite Setup     
+
+*** Test Cases ***
+case1
+    [Documentation]    App端出借中的散标
+    [Tags]    Level1
+    /api/userScattered/findMyLoanList    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"userId":"12345","pageNum":"1","pageSize":"7","type":"0"}    ${thelenderphone}    ${thelenderphone_pwd}    "code":0
+case2
+    [Documentation]    App端满标的散标
+    [Tags]    Level2
+    /api/userScattered/findMyLoanList    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"userId":"12345","pageNum":"1","pageSize":"7","type":"1"}    ${thelenderphone}    ${thelenderphone_pwd}    "code":0
+case3
+    [Documentation]    App端还款中的散标
+    [Tags]    Level2
+    /api/userScattered/findMyLoanList    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"userId":"12345","pageNum":"1","pageSize":"7","type":"2"}    ${thelenderphone}    ${thelenderphone_pwd}    "code":0
+case4
+    [Documentation]    App端已结清的散标
+    [Tags]    Level2
+    /api/userScattered/findMyLoanList    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"userId":"12345","pageNum":"1","pageSize":"7","type":"3"}    ${thelenderphone}    ${thelenderphone_pwd}    "code":0
+case5
+    [Documentation]   Pc端出借中的散标
+    [Tags]    Level1
+    /api/userScattered/pc/findMyLoan    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"userId":"12345","pageNum":"1","pageSize":"7","type":"0"}    ${thelenderphone}    ${thelenderphone_pwd}    "code":0
+case6
+    [Documentation]    Pc端满标的散标
+    [Tags]    Level2
+    /api/userScattered/findMyLoanList    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"userId":"12345","pageNum":"1","pageSize":"7","type":"1"}    ${thelenderphone}    ${thelenderphone_pwd}    "code":0
+case7
+    [Documentation]    Pc端还款中的散标
+    [Tags]    Level2
+    /api/userScattered/findMyLoanList    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"userId":"12345","pageNum":"1","pageSize":"7","type":"2"}    ${thelenderphone}    ${thelenderphone_pwd}    "code":0
+case8
+    [Documentation]    Pc端已结清的散标
+    [Tags]    Level2
+    /api/userScattered/findMyLoanList    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"userId":"12345","pageNum":"1","pageSize":"7","type":"3"}    ${thelenderphone}    ${thelenderphone_pwd}    "code":0
+
+
+

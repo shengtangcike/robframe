@@ -1,0 +1,15 @@
+*** Settings ***
+Resource     ../../../../config_file/Data.txt
+Resource     ../../../${data_env}/resource.txt
+Resource     ../../../keyword/keyword.txt
+Library    lib
+Test Template     HttpApi
+Suite Setup     
+
+*** Test Cases ***
+case1
+    [Documentation]    智享服务常见问题
+    [Tags]    Level1
+    /api/wisdomProduct/findProductQuestions    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"productNo":"${bidNocore_zx}"}    None    None    "code":0
+
+

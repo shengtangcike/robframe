@@ -1,0 +1,34 @@
+*** Settings ***
+Resource     ../../../../config_file/Data.txt
+Resource     ../../../${data_env}/resource.txt
+Resource     ../../../keyword/keyword.txt
+Library    lib
+Test Template     HttpApi
+Suite Setup
+
+*** Test Cases ***
+case1
+    [Documentation]    设备app充值方式快捷
+    [Tags]    Level1
+    /api/bankIcon/queryBankLimit    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"userId":"9","platform":"app","rechargeWay":"quick"}    ${Newphone1}    ${Newphone1password}    查询成功
+case2
+    [Documentation]    设备app充值方式个人网银
+    [Tags]    Level2
+    /api/bankIcon/queryBankLimit    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"userId":"9","platform":"app","rechargeWay":"gateWay"}    ${Newphone1}    ${Newphone1password}    查询成功
+case3
+    [Documentation]    设备app充值方式企业网银
+    [Tags]    Level2
+    /api/bankIcon/queryBankLimit    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"userId":"9","platform":"app","rechargeWay":"enterprise"}    ${Newphone1}    ${Newphone1password}    查询成功
+case4
+    [Documentation]    设备pc充值方式快捷
+    [Tags]    Level2
+    /api/bankIcon/queryBankLimit    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"userId":"9","platform":"pc","rechargeWay":"quick"}    ${Newphone1}    ${Newphone1password}    查询成功
+case5
+    [Documentation]    设备pc充值方式个人网银
+    [Tags]    Level2
+    /api/bankIcon/queryBankLimit    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"userId":"9","platform":"pc","rechargeWay":"gateWay"}    ${Newphone1}    ${Newphone1password}    查询成功
+case6
+    [Documentation]    设备pc充值方式企业网银
+    [Tags]    Level2
+    /api/bankIcon/queryBankLimit    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"userId":"9","platform":"pc","rechargeWay":"enterprise"}    ${Newphone1}    ${Newphone1password}    查询成功
+

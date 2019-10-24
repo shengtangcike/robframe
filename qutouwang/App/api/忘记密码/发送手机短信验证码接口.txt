@@ -1,0 +1,33 @@
+*** Settings ***
+Resource     ../../../../config_file/Data.txt
+Resource     ../../../${data_env}/resource.txt
+Resource     ../../../keyword/keyword.txt
+Library    lib
+Test Template     HttpApi
+Suite Setup     
+
+*** Test Cases ***
+case1
+    [Documentation]    发送短信验证码
+    [Tags]    Level1
+    /api/userAuth/sendMobileCode    post   {"Content-Type": "application/x-www-form-urlencoded"}    {"mobile":"${Newphone1}","checkCode":"${Newphone1_aes}"}    None    None    "code":0
+case2
+    [Documentation]    手机号码为空
+    [Tags]    Level2
+    /api/userAuth/sendMobileCode    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"mobile":"","checkCode":"${Newphone1_aes}"}    None    None    手机号不能为空
+case3
+    [Documentation]    手机号码格式错误
+    [Tags]    Level2
+    /api/userAuth/sendMobileCode    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"mobile":"22233334444","checkCode":"6ef3c8a0ed8e26b2759ec010fdd552e0"}    None    None    手机号码格式错误
+case4
+    [Documentation]    手机号码未注册
+    [Tags]    Level2
+    /api/userAuth/sendMobileCode    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"mobile":"18956235656","checkCode":"869ef918181827f9a6a73837dc9550e6"}    None    None    该手机号尚未注册
+case5
+    [Documentation]    不传mobile字段(mobile必传)
+    [Tags]    Level3
+    /api/userAuth/sendMobileCode    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"checkCode":"${Newphone1_aes}"}    None    None    手机号不能为空
+case6
+    [Documentation]    不传checkCode字段(checkCode必传)
+    [Tags]    Level3
+    /api/userAuth/sendMobileCode    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"mobile":"${Newphone1}"}    None    None    "code":-1

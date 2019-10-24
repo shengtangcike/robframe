@@ -1,0 +1,14 @@
+*** Settings ***
+Resource     ../../../../config_file/Data.txt
+Resource     ../../../${data_env}/resource.txt
+Resource     ../../../keyword/keyword.txt
+Library    lib
+Test Template     HttpApi
+Suite Setup     
+
+*** Test Cases ***
+case1
+    [Documentation]    我的债权转让购买记录
+    [Tags]    Level1
+    /api/userTransferDebt/findTransferDebtRecord    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"userId":"12345","debtId":"${debt_id}","pageNum":"1","pageSize":"7"}    ${thelenderphone}    ${thelenderphone_pwd}    "code":0
+

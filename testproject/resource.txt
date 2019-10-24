@@ -1,0 +1,12 @@
+*** Variables ***
+${var1}    11
+${var2}    22
+${var3}    33
+${var4}    44
+*** Keywords ***
+userkeyword
+    [Arguments]    ${arg1}    ${arg2}    @{arg3}
+    log    ${arg1}
+    log    ${arg2}
+    log many    @{arg3}
+    [Return]    ${arg1}

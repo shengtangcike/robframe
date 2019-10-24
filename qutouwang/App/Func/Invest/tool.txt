@@ -1,0 +1,41 @@
+*** Settings ***
+Resource     ../../../../config_file/Data.txt
+Resource     ../../../${data_env}/resource.txt
+Resource     ../../../keyword/keyword.txt
+Library    lib
+Suite Setup     loan and core login
+
+
+*** Test Cases ***
+case1
+	[Documentation]  借款人Pc借款端还款
+	[Tags]  Level1
+	repaymentdebt    19900002014    a1234567    jj2019091800017     1
+	corereturnedmoney    jj2019091800017     1
+	repaymentdebt    19900002014    a1234567    jj2019091800017     2
+	corereturnedmoney    jj2019091800017     2
+	repaymentdebt    19900002014    a1234567    jj2019091800017     3
+	corereturnedmoney    jj2019091800017     3
+	repaymentdebt    19900002014    a1234567    jj2019091800017     4
+	corereturnedmoney    jj2019091800017     4
+	repaymentdebt    19900002014    a1234567    jj2019091800017     5
+	corereturnedmoney    jj2019091800017     5
+
+
+
+
+case2
+    [Documentation]  核心回款
+	[Tags]  Level1
+#	repaymentdebt    19900002014    a1234567    jj2019091800017     5
+#    corereturnedmoney    jj2019091800017     5
+	repaymentdebt    15687854954    a1234567    jj2019091800017     6
+    corereturnedmoney    jj2019091800017     6
+
+
+*** Keywords ***
+loan and core login
+    loansyslogin    ${loanusername}    ${loanuserpassword}
+    coresyslogin
+
+

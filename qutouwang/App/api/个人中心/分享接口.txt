@@ -1,0 +1,31 @@
+*** Settings ***
+Resource     ../../../../config_file/Data.txt
+Resource     ../../../${data_env}/resource.txt
+Resource     ../../../keyword/keyword.txt
+Library    lib
+Test Template     HttpApi
+Suite Setup     
+
+*** Test Cases ***
+case1
+    [Documentation]    资产详情晒一晒分享
+    [Tags]    Level1
+    /api/accountNotice/sharingNotification    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"userId":"12345","equipmentType":"app","productType":"1"}    ${Newphone1}    ${Newphone1password}    webUrl
+case2
+    [Documentation]    散标的详情分享
+    [Tags]    Level2
+    /api/accountNotice/sharingNotification    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"userId":"12345","pactissueNo":"${bidNocore}","productType":"2"}    ${Newphone1}    ${Newphone1password}    webUrl
+case3
+    [Documentation]    债转标的详情分享
+    [Tags]    Level2
+    /api/accountNotice/sharingNotification    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"userId":"12345","debtId":"${debt_id}","productType":"3"}    ${Newphone1}    ${Newphone1password}    webUrl
+case4
+    [Documentation]    智享标的详情分享
+    [Tags]    Level2
+    /api/accountNotice/sharingNotification    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"userId":"12345","productNo":"${bidNocore_zx}","productType":"4"}    ${Newphone1}    ${Newphone1password}    webUrl
+case5
+    [Documentation]    邀请有礼分享
+    [Tags]    Level2
+    /api/accountNotice/sharingNotification    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"userId":"12345","equipmentType":"app","productType":"5"}    ${Newphone1}    ${Newphone1password}    webUrl
+
+

@@ -1,0 +1,13 @@
+*** Settings ***
+Force Tags        suite_tag
+
+*** Test Cases ***
+case1
+    [Tags]    case1_tag
+    #测试集标签与测试用例标签
+    log    Hello World
+
+case2
+    [Tags]    case2_tag
+    #测试集标签与测试用例标签
+    log    Hello

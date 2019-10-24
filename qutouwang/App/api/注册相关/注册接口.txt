@@ -1,0 +1,57 @@
+*** Settings ***
+Resource     ../../../../config_file/Data.txt
+Resource     ../../../${data_env}/resource.txt
+Resource     ../../../keyword/keyword.txt
+Library    lib
+Test Template     HttpApi
+Suite Setup     getCheckImg and sendMobileCode    ${Newphone2}    ${Newphone2_aes}
+
+*** Test Cases ***
+case1
+    [Documentation]    手机号码为空
+    [Tags]    Level2
+    /api/userRegister/pc/register    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"password":"221e11d7523fbcac45481d254a77eb52","mobile":"","smsCheckCode":"${code}","userType":"2","invitationCode":""}    None    None    手机号不能为空
+case2
+    [Documentation]    手机号码格式错误
+    [Tags]    Level2
+    /api/userRegister/pc/register    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"password":"063c7fe67c37904a5b3ecd2cde8ea7f4","mobile":"33333333333","smsCheckCode":"${code}","userType":"2","invitationCode":""}    None    None    手机号码格式错误
+case3
+    [Documentation]    手机号已经注册
+    [Tags]    Level2
+    /api/userRegister/pc/register    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"password":"${Newphone1_psw}","mobile":"${Newphone1}","smsCheckCode":"${code}","userType":"2","invitationCode":""}    None    None    此手机号已注册
+case4
+    [Documentation]    密码为纯数字12345678
+    [Tags]    Level2
+    /api/userRegister/pc/register    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"password":"${Newphone2_psw1}","mobile":"${Newphone2}","smsCheckCode":"${code}","userType":"2","invitationCode":""}    None    None    密码须为8~16位英文、数字或下划线组合
+case5
+    [Documentation]    密码过短a12345
+    [Tags]    Level2
+    /api/userRegister/pc/register    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"password":"${Newphone2_psw2}","mobile":"${Newphone2}","smsCheckCode":"${code}","userType":"2","invitationCode":""}    None    None    密码须为8~16位英文、数字或下划线组合
+case6
+    [Documentation]    密码过长a1234567890123456
+    [Tags]    Level2
+    /api/userRegister/pc/register    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"password":"${Newphone2_psw3}","mobile":"${Newphone2}","smsCheckCode":"${code}","userType":"2","invitationCode":""}    None    None    密码须为8~16位英文、数字或下划线组合
+case7
+    [Documentation]    密码为空
+    [Tags]    Level2
+    /api/userRegister/pc/register    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"password":"${Newphone2_psw3}","mobile":"${Newphone2}","smsCheckCode":"${code}","userType":"2","invitationCode":""}    None    None    密码须为8~16位英文、数字或下划线组合
+case8
+    [Documentation]    短信验证码为空
+    [Tags]    Level2
+    /api/userRegister/pc/register    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"password":"${Newphone2_psw}","mobile":"${Newphone2}","smsCheckCode":"","userType":"2","invitationCode":""}    None    None    验证码不能为空
+case9
+    [Documentation]    短信验证码错误
+    [Tags]    Level2
+    /api/userRegister/pc/register    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"password":"${Newphone2_psw}","mobile":"${Newphone2}","smsCheckCode":"963258","userType":"2","invitationCode":""}    None    None    验证码错误
+case10
+    [Documentation]    不传mobile字段(mobile为必传项)
+    [Tags]    Level3
+    /api/userRegister/pc/register    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"password":"221e11d7523fbcac45481d254a77eb52","smsCheckCode":"${code}","userType":"2","invitationCode":""}    None    None    手机号不能为空
+case11
+    [Documentation]    不传password字段(password为必传项)
+    [Tags]    Level3
+    /api/userRegister/pc/register    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"mobile":"${Newphone2}","smsCheckCode":"${code}","userType":"2","invitationCode":""}    None    None    密码不能为空
+case12
+    [Documentation]    不传smsCheckCode字段(smsCheckCode为必传项)
+    [Tags]    Level3
+    /api/userRegister/pc/register    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"password":"${Newphone2_psw}","mobile":"${Newphone2}","userType":"2","invitationCode":""}    None    None    验证码不能为空

@@ -1,0 +1,18 @@
+*** Settings ***
+Resource     ../../../../config_file/Data.txt
+Resource     ../../../${data_env}/resource.txt
+Resource     ../../../keyword/keyword.txt
+Library    lib
+Test Template     HttpApi
+Suite Setup     
+
+*** Test Cases ***
+case1
+    [Documentation]    散标校验用户状态
+    [Tags]    Level1
+    /api/invest/checkUser    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"id": "${bidNocore}","userId":"9","type":"0"}    ${thelenderphone}    ${thelenderphone_pwd}    "code":0
+case2
+    [Documentation]    智享校验用户状态
+    [Tags]    Level2
+    /api/invest/checkUser    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"id": "${bidNocore_zx}","userId":"9","type":"1"}    ${thelenderphone}    ${thelenderphone_pwd}    当前标的剩余授权出借金额应小于500000元
+

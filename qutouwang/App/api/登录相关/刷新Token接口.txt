@@ -1,0 +1,13 @@
+*** Settings ***
+Resource     ../../../../config_file/Data.txt
+Resource     ../../../${data_env}/resource.txt
+Resource     ../../../keyword/keyword.txt
+Library    lib
+Test Template     HttpApi
+Suite Setup     
+
+*** Test Cases ***
+case1
+    [Documentation]    登录账号，刷新token
+    [Tags]    Level1
+    /api/token/refreshToken    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"userId": "181026154", "refreshToken": "d112"}    ${Newphone1}    ${Newphone1password}    您的账号登录有效期已失效

@@ -1,0 +1,28 @@
+*** Settings ***
+Library    lib
+
+*** Test Cases ***
+case1
+	[Documentation]  智享服务正常流程1.资产端推送债权到qtw借款端
+	[Tags]  normal
+	lib.loansysinto_zx
+case2
+    [Documentation]  智享服务正常流程2.借款人签约
+	[Tags]  normal
+	lib.loanSignOperation_zx
+case3
+	[Documentation]  智享服务正常流程3.qtw借款系统审核通过推送核心系统
+	[Tags]  normal
+	lib.debitcheck_zx
+case4
+	[Documentation]  智享服务正常流程4.核心系统创建智享服务标并发标
+	[Tags]  normal
+	lib.financialsave_zx
+case5
+	[Documentation]  智享服务正常流程5.出借人出借智享服务标/投满
+	[Tags]  normal
+	lib.investWisdom_zx
+case6
+	[Documentation]  智享服务正常流程6.核心系统撮合/结算
+	[Tags]  normal
+	lib.cuohejiesuan_zx

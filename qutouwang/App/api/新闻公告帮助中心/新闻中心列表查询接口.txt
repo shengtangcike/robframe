@@ -1,0 +1,14 @@
+*** Settings ***
+Resource     ../../../../config_file/Data.txt
+Resource     ../../../${data_env}/resource.txt
+Resource     ../../../keyword/keyword.txt
+Library    lib
+Test Template     HttpApi
+Suite Setup     
+
+*** Test Cases ***
+case1
+    [Documentation]    查询新闻中心列表信息
+    [Tags]    Level1
+    /api/home/pc/findPcMediaList    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"pageNum":"1","pageSize":"7"}    None    None    "code":0
+

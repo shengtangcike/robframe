@@ -1,0 +1,13 @@
+*** Settings ***
+Resource     ../../../../config_file/Data.txt
+Resource     ../../../${data_env}/resource.txt
+Resource     ../../../keyword/keyword.txt
+Library    lib
+Test Template     HttpApi
+Suite Setup     
+
+*** Test Cases ***
+case1
+    [Documentation]    查询借款人提前还款信息展示
+    [Tags]    Level1
+    /api/loan/earlyRepayment    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"debtcode":"jj2019081200015"}    ${theborrowerphone}    ${theborrowerphone_pwd}    全部提前还款信息展示失败

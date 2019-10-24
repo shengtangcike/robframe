@@ -1,0 +1,24 @@
+*** Settings ***
+Resource     ../../../../config_file/Data.txt
+Resource     ../../../${data_env}/resource.txt
+Resource     ../../../keyword/keyword.txt
+Library    lib
+#Test Template     HttpApi
+Suite Setup
+
+*** Test Cases ***
+case1
+    [Documentation]    注册手机号
+    [Tags]    Level1
+    sendMobileCode and register auto    8848
+case2
+    [Documentation]    需要注册的手机号一天最多发10条短信
+    [Tags]    Level1
+    [Setup]     delete_redis_register_phone_sms    ${Newphone2}
+    ${index}    Set Variable    0
+    :FOR    ${index}    IN RANGE    10
+    \    getCheckImg and sendMobileCode    ${Newphone2}    ${Newphone2_aes}
+    #为什么报了个非法请求
+    HttpApi    /api/userRegister/getCheckImg    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"mobile": "${Newphone2}"}    None    None    num
+    HttpApi    /api/userRegister/sendMobileCode    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"mobile": "${Newphone2}","smsCheckCode":"${Newphone2_aes}"}    None    None    您获取验证码的次数过于频繁
+    [Teardown]     delete_redis_register_phone_sms    ${Newphone2}

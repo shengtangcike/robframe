@@ -1,0 +1,18 @@
+*** Settings ***
+Resource     ../../../../config_file/Data.txt
+Resource     ../../../${data_env}/resource.txt
+Resource     ../../../keyword/keyword.txt
+Library    lib
+#Test Template     HttpApi
+Suite Setup
+
+*** Test Cases ***
+case1
+	[Documentation]  用户解除授权接口
+	[Tags]  Level2
+	HttpApi    /api/userAccountInfo/unAuthorizeByUser    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"userId":"","equipmentType":"app"}    ${Newphone1}    ${Newphone1password}    weburl
+case2
+	[Documentation]  用户授权接口,查看p2p_user_reg_info的sign_status字段
+	[Tags]  Level2
+	sleep  40
+	HttpApi    /api/userAccountInfo/authorize    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"userId":"","equipmentType":"app","authAmt":"10000","authDue":"12"}    ${Newphone1}    ${Newphone1password}    weburl

@@ -1,0 +1,33 @@
+*** Settings ***
+Resource     ../../../../config_file/Data.txt
+Resource     ../../../${data_env}/resource.txt
+Resource     ../../../keyword/keyword.txt
+Library    lib
+Test Template     HttpApi
+Suite Setup     
+
+*** Test Cases ***
+case1
+    [Documentation]    输入已注册的出借人手机号和密码
+    [Tags]    Level1
+    /api/userAuth/login    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"account": "${Newphone1}","password":"${Newphone1_psw}"}    None    None    "code":0
+case2
+    [Documentation]    输入已注册的借款人手机号和密码
+    [Tags]    Level2
+    /api/userAuth/login    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"account": "${NewLoanphone1}","password":"${NewLoanphone1_aes}"}    None    None    "code":0
+case3
+    [Documentation]    手机号码未注册
+    [Tags]    Level2
+    /api/userAuth/login    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"account": "12233334444","password":"68483e3955f427f78f8880f9a424f6d8"}    None    None    该手机号尚未注册
+case4
+    [Documentation]    密码错误
+    [Tags]    Level2
+    /api/userAuth/login    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"account": "${Newphone1}","password":"2b7edd1b5d45b317f4f19e49e451053c"}    None    None    密码错误
+case5
+    [Documentation]    不输入account参数(account必传)
+    [Tags]    Level3
+    /api/userAuth/login    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"password":"${Newphone1_psw}"}    None    None    手机号不能为空
+case6
+    [Documentation]    不输入password参数(password必传)
+    [Tags]    Level3
+    /api/userAuth/login    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"account": "${Newphone1}"}    None    None    密码不能为空

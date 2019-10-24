@@ -1,0 +1,13 @@
+*** Settings ***
+Resource     ../../../../config_file/Data.txt
+Resource     ../../../${data_env}/resource.txt
+Resource     ../../../keyword/keyword.txt
+Library    lib
+Test Template     HttpApi
+Suite Setup     
+
+*** Test Cases ***
+case1
+    [Documentation]    查询站内信未读条数
+    [Tags]    Level1
+    /api/userMessage/countUnRead    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"userId":"9"}    ${thelenderphone}    ${thelenderphone_pwd}    "code":0

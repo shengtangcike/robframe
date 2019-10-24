@@ -1,0 +1,15 @@
+*** Settings ***
+Resource     ../../../../config_file/Data.txt
+Resource     ../../../${data_env}/resource.txt
+Resource     ../../../keyword/keyword.txt
+Library    lib
+Test Template     HttpApi
+Suite Setup     
+
+*** Test Cases ***
+case1
+    [Documentation]    查询散标收益计算器参数配置
+    [Tags]    Level1
+    /api/scatteredProduct/getParametersByCalculator    post    {"Content-Type": "application/x-www-form-urlencoded"}    None    None    None    "code":0
+
+

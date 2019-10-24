@@ -1,0 +1,4 @@
+#resourse.txt和keyword.txt的配置信息
+#data_testenv读取的是测试环境的数据/data_autoenv读取的是自动化环境的数据
+*** Variables ***
+${data_env}    data_autoenv

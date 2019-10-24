@@ -1,0 +1,7 @@
+*** Test Cases ***
+case1
+    [Documentation]    循环语句
+    [Tags]
+    :FOR    ${index}    IN RANGE    5
+    \    log    ${index}
+

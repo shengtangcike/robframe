@@ -1,0 +1,123 @@
+﻿*** Settings ***
+Library    lib
+*** Keywords ***
+getCheckImg
+    [Arguments]    ${phone}
+    HttpApi    /api/userRegister/getCheckImg    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"mobile": "${phone}"}    None    None    num
+
+getCheckImg and sendMobileCode
+    [Arguments]    ${phone}    ${phone_aes}
+    getCheckImg    ${phone}
+    HttpApi    /api/userRegister/sendMobileCode    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"mobile": "${phone}","smsCheckCode":"${phone_aes}"}    None    None    "code":0
+    sleep    2
+    ${result}=    select_return_A_data    SELECT mes_body FROM qtw_invest_db.p2p_sms_record WHERE receive_address = '${phone}' ORDER BY send_time DESC LIMIT 1;
+    ${code}=    regular    验证码：(.+?)，    ${result}
+    Set Suite Variable    ${code}
+
+sendMobileCode and register auto
+    [Arguments]    ${phone}
+    Run Keyword If    ${phone}==8848    register auto phone
+    ...    ELSE    register set phone    ${phone}
+    ${phone_aes}=    phone_aes    ${registerphone}
+    ${password_aes}=    password_aes    ${registerphone}    a1234567
+    getCheckImg and sendMobileCode    ${registerphone}    ${phone_aes}
+    HttpApi    /api/userRegister/pc/register    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"password":"${password_aes}","mobile":"${registerphone}","smsCheckCode":"${code}","userType":"1","invitationCode":""}    None    None    "code":0
+
+register auto phone
+    [Arguments]
+    ${registerphone}=    phone_time
+    Set Suite Variable    ${registerphone}
+register set phone
+    [Arguments]    ${phone}
+    ${registerphone}    Set Variable    ${phone}
+    Set Suite Variable    ${registerphone}
+
+open account phone
+    ${openaccount}=    select_return_A_data    SELECT cif_account FROM qtw_invest_db.p2p_user_reg_info WHERE cif_account LIKE "156%" and id_num is null ORDER BY cif_account DESC LIMIT 1;
+    ${openaccount}=    regular    '(.+?)'    ${openaccount}
+    ${idcard}=    createid
+    Set Suite Variable    ${openaccount}
+    Set Suite Variable    ${idcard}
+
+forget and checkCode
+    [Arguments]    ${phone}
+    ${phone_aes}=    phone_aes    ${phone}
+    HttpApi    /api/userAuth/sendMobileCode    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"mobile":"${phone}","checkCode":"${phone_aes}"}    None    None    "code":0
+    sleep    2
+    ${result}=    select_return_A_data    SELECT mes_body FROM qtw_invest_db.p2p_sms_record WHERE receive_address = '${phone}' ORDER BY send_time DESC LIMIT 1;
+    ${smscheckcode}=    regular    验证码是(.+?)，    ${result}
+    Set Suite Variable    ${smscheckcode}
+    Set Suite Variable    ${phone_aes}
+
+forgetpwd and sendcode
+    [Arguments]    ${phone}
+    delete_redis_password_phone_sms    ${phone}
+    ${phone_aes}=    phone_aes    ${phone}
+    sleep  3
+    HttpApi    /api/userAuth/sendMobileCode    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"mobile":"${phone}","checkCode":"${phone_aes}"}    None    None    "code":0
+    sleep    3
+    ${result}=    select_return_A_data    SELECT mes_body FROM qtw_invest_db.p2p_sms_record WHERE receive_address = '${phone}' ORDER BY send_time DESC LIMIT 1;
+    ${smscheckcode}=    regular    验证码是(.+?)，    ${result}
+    Set Suite Variable    ${smscheckcode}
+
+delete loginerror num
+    [Arguments]    ${phone}
+    delete_redis_loginerror_num     ${phone}
+    sql_update    UPDATE qtw_invest_db.p2p_user_reg SET lock_off_time='2019-01-01 01:01:01' WHERE cif_account='${phone}';
+    sql_update    UPDATE qtw_invest_db.p2p_user_reg SET login_error_num='0' WHERE cif_account='${phone}';
+login and checkVerificationCode
+    [Arguments]    ${phone}
+    delete_redis_phone_update    ${phone}
+    ${phone_aes}=    phone_aes    ${phone}
+    ${password_aes}=    password_aes    ${phone}    a1234567
+    HttpApi    /api/userRegister/checkPhone/sendVerificationCode    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"userId":"9","mobile":"${phone}","aesMobile":"${phone_aes}","messageType":"checkPhone"}    ${phone}    a1234567    "code":0
+    ${result}=    select_return_A_data    SELECT mes_body FROM `p2p_sms_record` WHERE receive_address = '${phone}' ORDER BY send_time DESC LIMIT 1;
+    ${smscheckcode}=    regular    验证码是(.+?)，    ${result}
+    ${result}=    select_return_A_data    SELECT cif_no FROM p2p_user_reg_info WHERE cif_account = '${phone}';
+    ${userId}=    regular    '(.+?)'    ${result}
+    ${result}=    select_return_A_data    SELECT access_token FROM `p2p_sys_app_token` WHERE user_id = '${userId}';
+    ${token}=    regular    '(.+?)'    ${result}
+    sleep  5
+    Set Suite Variable    ${userId}
+    Set Suite Variable    ${token}
+    Set Suite Variable    ${smscheckcode}
+login updatePhone and sendCode
+    [Arguments]    ${phone1}    ${phone2}
+    ${phone2_aes}=    phone_aes    ${phone2}
+    ${password_aes}=    password_aes    ${phone1}    a1234567
+    delete_redis_phone_update    ${phone1}
+    delete_redis_phone_update    ${phone2}
+    HttpApi    /api/userRegister/updatePhone/sendVerificationCode    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"userId":"9","mobile":"${phone2}","aesMobile":"${phone2_aes}","messageType":"updatePhone"}    ${phone1}    a1234567    "code":0
+    ${result}=    select_return_A_data    SELECT mes_body FROM `p2p_sms_record` WHERE receive_address = '${phone2}' ORDER BY send_time DESC LIMIT 1;
+    ${smscheckcode}=    regular    验证码是(.+?)，    ${result}
+    Set Suite Variable    ${smscheckcode}
+    ${result}=    select_return_A_data    SELECT cif_no FROM p2p_user_reg_info WHERE cif_account = '${phone1}';
+    ${userId}=    regular    '(.+?)'    ${result}
+    Set Suite Variable    ${userId}
+    ${result}=    select_return_A_data    SELECT access_token FROM `p2p_sys_app_token` WHERE user_id = '${userId}';
+    ${token}=    regular    '(.+?)'    ${result}
+    Set Suite Variable    ${token}
+
+
+clear redis recharge
+    [Arguments]    ${phone}
+    ${result}=    select_return_A_data    SELECT cif_no FROM p2p_user_reg_info WHERE cif_account = '${phone}';
+    ${userId}=    regular    '(.+?)'    ${result}
+    delete_redis_recharge    ${userId}
+    delete_redis_recharge    19080002245635
+
+check bank status
+    [Arguments]    ${phone}
+    ${result}=    select_return_A_data    SELECT cif_no FROM p2p_user_reg_info WHERE cif_account = '${phone}';
+    ${cif_no}=    regular    '(.+?)'    ${result}
+    ${result}=    select_return_A_data    SELECT card_status FROM p2p_card_bind WHERE cif_no = '${cif_no}' ORDER BY oid DESC LIMIT 1;
+    ${card_status}=    regular    '(.+?)'    ${result}
+    Set Suite Variable    ${card_status}
+
+
+#    ${sss}=    tesx                          #关键字返回赋值
+#    ${asd}    Set Variable    2222           #普通变量赋值
+#    Set Suite Variable    ${asd}             #运用全局变量，实现局部变量的传递
+#    Set Suite Variable    ${sss}
+#    ${phone}=    Run Keyword If    ${phone} == 8848    phone_time     if语句的后面的关键字的返回值
+

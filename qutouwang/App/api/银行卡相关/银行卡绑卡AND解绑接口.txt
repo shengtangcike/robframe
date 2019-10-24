@@ -1,0 +1,22 @@
+*** Settings ***
+Resource     ../../../../config_file/Data.txt
+Resource     ../../../${data_env}/resource.txt
+Resource     ../../../keyword/keyword.txt
+Library    lib
+#Test Template     HttpApi
+Suite Setup
+
+*** Test Cases ***
+case1
+    [Documentation]    解绑银行卡
+    [Tags]    Level2
+    HttpApi    /api/userAccountInfo/unbindCard    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"userId":"9"}    ${Newphone1}    ${Newphone1password}    "code":0
+case2
+    [Documentation]    绑定银行卡
+    [Tags]    Level2
+    :FOR    ${index}    IN RANGE    10
+    \    check bank status    ${Newphone1}
+    \    Run Keyword If    ${card_status} == 0    Exit For Loop
+    \    sleep    30
+    HttpApi    /api/userAccountInfo/bindCard    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"userId":"9"}    ${Newphone1}    ${Newphone1password}    "code":0
+

@@ -1,0 +1,90 @@
+﻿*** Variables ***
+#====================================================================
+#新出借人一15600000001//密码//加密的手机号
+${Newphone1}    15600000001
+${Newphone1_userId}    19071042824663
+${Newphone1_aes}    7060ff5ee74b5391fc7d8089c33ed60f
+${Newphone1password}    a1234567
+#a1234567
+${Newphone1_psw}    3cfb73b270af1792db29976eba61e1e4
+#1234abcd
+${Newphone1_psw0}    70a81ed6c1c7cba7ff1b00ff78f1f56f
+#12345678
+${Newphone1_psw1}    312e8b0cfd71d7b8324460afb457d5b3
+#a12345
+${Newphone1_psw2}    6ca07a11cdf079373bc40e9d4f38fa22
+#a1234567890123456
+${Newphone1_psw3}    c80f36f92c473deb9a7893e77d3a3cd1296b60d4782524e5993dba4739dd5172
+#密码为空
+${Newphone1_psw4}    78dab53915559adccfb4b72b60adeed2
+#====================================================================
+#未注册的手机号//密码//加密的手机号
+${Newphone2}    15600000003
+${Newphone2_aes}    3e278eee4648a4e5b23f74fce9f849da
+#a1234567
+${Newphone2_psw}    f6a0514db5e299f87c39de5382686bee
+#12345678
+${Newphone2_psw1}    a27582b5b0d64a345dab133ab6f86ae1
+#a12345
+${Newphone2_psw2}    6a681dd418875d52ad52f2fc773ac071
+#a1234567890123456
+${Newphone2_psw3}    dbca85476e6e633f90fc6128c69e889962938cc0016fbfa4414b1fcd146a19cc
+#密码为空
+${Newphone2_psw4}    fca1fb73050eba470b1629a6cc76b121
+#====================================================================
+#新出借人二15600000002//账户锁定
+${Newphone3}    15600000002
+${Newphone3_aes}    f745a2554514da2ea4508a15e4ec82ff
+${Newphone3password}    a1234567
+#错误密码a12345678
+${Newphone3_psw}    08cab5fa3f1ded7e560cb566330d518a
+#====================================================================
+#借款人130283198906190013//新借款人//16600000001
+${NewLoanphone1}    16600000001
+${NewLoanphone1_psw}    a1234567
+${NewLoanphone1_aes}    32b071d75171fbffdad9343543e5bf73
+#数据标p2p_user_reg_info中数据
+${idoldcard}    154441421817204431
+${msgId}    709054
+
+#===================散标投资主要流程变量=========================
+#散标借款人
+${theborrowerphone}    19900000001
+${theborrowername}    借款人新
+${theborrowerphone_pwd}    a1234567
+${theborroweridcard}    511423198908020057
+#垫付机构
+${thepaymentphone}    13400002100
+${thepaymentphone_pwd}    a1234567
+${thepaymentname}    垫付机构二
+${thepaymentid}    762491
+#散标出借人
+${thelenderphone}    19900000002
+${thelenderphone_pwd}    a1234567
+#散标承接人
+${thelrecipientphone}    19900000003
+${thelrecipientphone_pwd}    a1234567
+
+#债权的编号和主键
+${debtCode}    jj2019080700014
+${debtIdcore}    52600050607
+#散标标的编号和主键
+${bidcore}    20000028360
+${bidNocore}    bd19080700011
+${order_id}    19081022409891
+
+#债转标的标号
+${bidNocore_debt_id}    bd19080700008
+${debt_id}    19080366463544
+
+#债权的编号和主键
+${debtCode_zx}    jj2019080700013
+${debtIdcore_zx}    52600050606
+#智享标的编号和主键
+${bidcore_zx}    20000005552
+${bidNocore_zx}    zxfw0120190807003
+${order_id_zx}    19081290502619
+
+#==============================================================
+${loanusername}    admin
+${loanuserpassword}    A123456

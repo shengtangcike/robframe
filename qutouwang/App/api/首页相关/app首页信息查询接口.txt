@@ -1,0 +1,13 @@
+*** Settings ***
+Resource     ../../../../config_file/Data.txt
+Resource     ../../../${data_env}/resource.txt
+Resource     ../../../keyword/keyword.txt
+Library    lib
+Test Template     HttpApi
+Suite Setup     
+
+*** Test Cases ***
+case1
+    [Documentation]    查询app首页相关信息
+    [Tags]    Level1
+    /api/home/app/index    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"userId":"12345"}    ${Newphone1}    ${Newphone1password}    "code":0

@@ -1,0 +1,14 @@
+*** Settings ***
+Resource     ../../../../config_file/Data.txt
+Resource     ../../../${data_env}/resource.txt
+Resource     ../../../keyword/keyword.txt
+Library    lib
+Test Template     HttpApi
+Suite Setup     
+
+*** Test Cases ***
+case1
+    [Documentation]    散标确认出借页面信息
+    [Tags]    Level1
+    /api/scatteredProduct/confirmInvestShow    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"pactissueNo": "${bidNocore}","userId":"9"}    ${thelenderphone}    ${thelenderphone_pwd}    "code":0
+

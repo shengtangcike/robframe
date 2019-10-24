@@ -1,0 +1,22 @@
+*** Settings ***
+Resource    resource.txt
+Library    lib
+Test Template     lib.HttpApi
+
+*** Test Cases ***
+case1	# 正常用例
+    [Tags]    case2_tag
+    [Documentation]    正常用例
+	http://192.168.1.42:81/hyzh-invest-ui-api/rest/api/userRegister/sendMobileCode	{"Content-Type": "application/x-www-form-urlencoded"}	{"mobile": "15700001122","verificationCode":"0000"}    验证码输入错误
+case2	# 手机号为空
+    [Tags]    case2_tag
+    [Documentation]    手机号为空
+	http://192.168.1.42:81/hyzh-invest-ui-api/rest/api/userRegister/sendMobileCode	{"Content-Type": "application/x-www-form-urlencoded"}	{"mobile": "","verificationCode":"0000"}	手机号码不能为空
+case3	# 手机号长度错误
+    [Tags]    case2_tag
+    [Documentation]    手机号长度错误
+	http://192.168.1.42:81/hyzh-invest-ui-api/rest/api/userRegister/sendMobileCode	{"Content-Type": "application/x-www-form-urlencoded"}	{"mobile": "222","verificationCode":"0000"}	   手机号码格式错误
+case4	# 手机号存在特殊字符
+    [Tags]    case2_tag
+    [Documentation]    手机号存在特殊字符
+	http://192.168.1.42:81/hyzh-invest-ui-api/rest/api/userRegister/sendMobileCode	{"Content-Type": "application/x-www-form-urlencoded"}	{"mobile": "dfdxcxc","verificationCode":"0000"}	   手机号码格式错误

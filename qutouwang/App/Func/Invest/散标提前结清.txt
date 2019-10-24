@@ -1,0 +1,65 @@
+*** Settings ***
+Resource     ../../../../config_file/Data.txt
+Resource     ../../../${data_env}/resource.txt
+Resource     ../../../keyword/keyword.txt
+Library    lib
+#Test Template     HttpApi
+Suite Setup     loan and core login
+
+
+*** Test Cases ***
+case1
+	[Documentation]  提前结清1.借款系统导入债权
+	[Tags]  Level2
+	loaninfodebt     ${theborrowername}     ${theborrowerphone}     ${theborroweridcard}     0.1     6    10000    鑫优贷B
+	sleep    5
+case2
+	[Documentation]  提前结清2.借款人签约
+	[Tags]  Level2
+	${debtCode}=    read_resourse    debtCode
+	HttpApi     /api/loan/loanSystemContract    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"userId":"1122","debtcode":"${debtCode}"}    ${theborrowerphone}    ${theborrowerphone_pwd}    "code":0
+    sleep    5
+case3
+	[Documentation]  提前结清3.借款系统审核通过推送核心系统
+	[Tags]  Level2
+	${debtCode}=    read_resourse    debtCode
+	debitcheck    ${debtCode}    ${thepaymentname}    ${thepaymentid}
+	sleep    20
+	querydebtId    ${debtCode}
+	sleep    5
+case4
+	[Documentation]  提前结清4.核心系统创建散标并发标
+	[Tags]  Level2
+	${debtIdcore}=    read_resourse    debtIdcore
+	corecheckandfabiao    ${debtIdcore}
+case5
+	[Documentation]  提前结清5.出借
+	[Tags]  Level2
+	${bidNocore}=    read_resourse    bidNocore
+    HttpApi     /api/invest/app/investProduct    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"userId":"1122","pactissueNo":"${bidNocore}","investAmount":"10000","newRelease":"1","couponId":""}    ${thelenderphone}    ${thelenderphone_pwd}    "code":0
+case6
+	[Documentation]  提前结清6.满标后放款
+	[Tags]  Level2
+	${debtCode}=    read_resourse    debtCode
+	lendingbid    ${debtCode}
+case7
+	[Documentation]  提前结清7.借款人Pc借款端还款1期/回款1期
+	[Tags]  Level2
+	${debtCode}=    read_resourse    debtCode
+	repaymentdebt    ${theborrowerphone}    ${theborrowerphone_pwd}    ${debtCode}    1
+	sleep    5
+    corereturnedmoney    ${debtCode}    1
+case8
+    [Documentation]  提前结清8.提前结清
+	[Tags]  Level2
+	${debtCode}=    read_resourse    debtCode
+    earlyrepaymentoperation    ${theborrowerphone}    ${theborrowerphone_pwd}    ${debtCode}
+
+
+
+*** Keywords ***
+loan and core login
+    loansyslogin    ${loanusername}    ${loanuserpassword}
+    coresyslogin
+
+

@@ -1,0 +1,29 @@
+﻿*** Settings ***
+Library           String
+Resource          ../config_file/resource.txt
+
+*** Variables ***
+${var}            value
+@{listvar}        a    b    c    d
+
+*** Test Cases ***
+case1
+    log    Hello World    #log打印日志，【#】可用于注释
+    log    ${var}
+    log    ${var1}
+    log    ${var2}
+    log    ${var3}
+    log many    ${listvar}
+    #Scalar变量赋值
+    ${var2}    Set Variable    abc
+    ${var3}    Set Variable If    '${var2}'=='abc'    ddd    eee
+    #Get赋值
+    ${getvar1}    Get Length    ${var2}
+    ${getvar2}    Get Time
+
+case2
+    #创建新list
+    @{listvar2}    Create List    1    2    3    4
+    #list的使用
+    log    @{listvar2}[1]
+    log    ${listvar2[1]}

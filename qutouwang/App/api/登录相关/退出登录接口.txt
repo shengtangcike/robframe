@@ -1,0 +1,13 @@
+*** Settings ***
+Resource     ../../../../config_file/Data.txt
+Resource     ../../../${data_env}/resource.txt
+Resource     ../../../keyword/keyword.txt
+Library    lib
+Test Template     HttpApi
+Suite Setup     delete loginerror num     ${Newphone1}
+
+*** Test Cases ***
+case1
+    [Documentation]    先登陆后退出
+    [Tags]    Level1
+    /api/userAuth/logout    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"userId":"1810232153200648977787"}    ${Newphone1}    ${Newphone1password}    "code":0

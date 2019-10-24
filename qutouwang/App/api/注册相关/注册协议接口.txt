@@ -1,0 +1,11 @@
+*** Settings ***
+Resource     ../../../../config_file/Data.txt
+Resource     ../../../${data_env}/resource.txt
+Library    lib
+Test Template     HttpApi
+
+*** Test Cases ***
+case1
+    [Documentation]    获取注册协议
+    [Tags]    Level1
+    /api/userRegister/findRegisterProtocolInfo    post    {"Content-Type": "application/x-www-form-urlencoded"}    None    None    None    "code":0

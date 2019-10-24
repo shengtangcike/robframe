@@ -1,0 +1,13 @@
+*** Settings ***
+Resource     ../../../../config_file/Data.txt
+Resource     ../../../${data_env}/resource.txt
+Resource     ../../../keyword/keyword.txt
+Library    lib
+Test Template     HttpApi
+Suite Setup     
+
+*** Test Cases ***
+case1
+    [Documentation]    投资的项目已满标
+    [Tags]    Level1
+    /api/invest/app/investBeforeCheck    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"pactissueNo": "${bidNocore}","userId":"9","investAmount":"100000"}    ${thelenderphone}    ${thelenderphone_pwd}    当前项目已满标

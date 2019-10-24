@@ -1,0 +1,68 @@
+*** Settings ***
+Library    lib
+
+*** Test Cases ***
+case1
+	[Documentation]  散标债转正常流程1.资产端推送债权到qtw借款端
+	[Tags]  normal
+	lib.loansysinto
+case2
+    [Documentation]  散标债转正常流程2.借款人签约
+	[Tags]  normal
+	lib.loanSignOperation
+case3
+	[Documentation]  散标债转正常流程3.qtw借款系统审核通过推送核心系统
+	[Tags]  normal
+	lib.debitcheck
+case4
+    [Documentation]  散标债转正常流程4.核心系统创建散标并发标
+	[Tags]  normal
+    lib.corecheckandfabiao
+case5
+    [Documentation]  散标债转正常流程5.资金Pc系统出借/满标
+	[Tags]  normal
+    lib.investbid
+case6
+    [Documentation]  散标债转正常流程6.满标后放款
+	[Tags]  normal
+    lib.lendingbid
+case7
+    [Documentation]  散标债转正常流程7.借款人Pc资金端正常还款还第一期
+	[Tags]  normal
+    lib.repaymentdebt    1
+case8
+    [Documentation]  散标债转正常流程8.核心系统手工跑定时任务回款给出借人回第一期
+	[Tags]  normal
+    lib.corereturnedmoney    1
+case9
+    [Documentation]  散标债转正常流程9.Pc资金端，借款人第二期逾期，逾期1天，借款端申请垫付，并由垫付机构垫付/逾期8天,生成罚息
+	[Tags]  normal
+    lib.overdue
+case10
+    [Documentation]  散标债转正常流程10.Pc资金端，借款人第二期逾期逾期8天，逾期还款
+	[Tags]  normal
+    lib.repaymentdebt    2
+case11
+    [Documentation]  散标债转正常流程11.借款人Pc资金端正常还款还第三期
+	[Tags]  normal
+    lib.repaymentdebt    3
+case12
+    [Documentation]  散标债转正常流程12.核心系统手工跑定时任务回款给出借人回第三期
+	[Tags]  normal
+    lib.corereturnedmoney    3
+case13
+    [Documentation]  散标债转正常流程13.借款人申请变现，承接人债转标出借投满，借款人变现
+	[Tags]  normal
+    lib.transferDebtapplyTransfer
+case14
+    [Documentation]  散标债转正常流程14.借款人Pc资金端正常还款还第四期
+	[Tags]  normal
+    lib.repaymentdebt    4
+case15
+    [Documentation]  散标债转正常流程15.核心系统手工跑定时任务回款给承接人回第四期
+	[Tags]  normal
+    lib.corereturnedmoney    4
+case16
+    [Documentation]  散标债转正常流程16.Pc资金端，借款人全部提前还款，承接人全部回款，交易结束
+	[Tags]  normal
+    lib.earlyrepaymentoperation

@@ -1,0 +1,5 @@
+*** Variables ***
+${var1}    11
+${var2}    22
+${var3}    33
+${var4}    44

@@ -1,0 +1,20 @@
+*** Settings ***
+Resource     ../../../../config_file/Data.txt
+Resource     ../../../${data_env}/resource.txt
+Resource     ../../../keyword/keyword.txt
+Library    lib
+Test Template     HttpApi
+Suite Setup     
+
+*** Test Cases ***
+case1
+    [Documentation]    查询app散标出借记录
+    [Tags]    Level1
+    /api/scatteredProduct/findLendList    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"pactissueNo": "${bidNocore}","pageNum":"1","pageSize":"10"}    None    None    "code":0
+case2
+    [Documentation]    查询pc散标出借记录
+    [Tags]    Level1
+    /api/scatteredProduct/pc/findLendList    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"pactissueNo": "${bidNocore}","pageNum":"1","pageSize":"10"}    None    None    "code":0
+
+
+

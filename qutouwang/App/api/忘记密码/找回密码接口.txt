@@ -1,0 +1,80 @@
+*** Settings ***
+Resource     ../../../../config_file/Data.txt
+Resource     ../../../${data_env}/resource.txt
+Resource     ../../../keyword/keyword.txt
+Library    lib
+
+*** Test Cases ***
+case1
+    [Documentation]    忘记密码修改密码
+    [Tags]    Level1
+    sleep    2
+    [Setup]    forgetpwd and sendcode     ${Newphone1}
+    HttpApi     /api/userAuth/forgetPwd    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"account":"${Newphone1}","newPassword":"${Newphone1_psw}","affirmPassword":"${Newphone1_psw}","smsCheckCode":"${smscheckcode}"}    None    None    "code":0
+    sleep    2
+case2
+    [Documentation]    忘记密码修改密码新密码与确认密码不一致
+    [Tags]    Level2
+    [Setup]    forgetpwd and sendcode     ${Newphone1}
+    HttpApi     /api/userAuth/forgetPwd    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"account":"${Newphone1}","newPassword":"${Newphone1_psw}","affirmPassword":"${Newphone1_psw0}","smsCheckCode":"${smscheckcode}"}    None    None    新密码和确认密码不一致
+    sleep    2
+case3
+    [Documentation]    忘记密码修改密码12345678
+    [Tags]    Level2
+    [Setup]    forgetpwd and sendcode     ${Newphone1}
+    HttpApi     /api/userAuth/forgetPwd    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"account":"${Newphone1}","newPassword":"${Newphone1_psw1}","affirmPassword":"${Newphone1_psw1}","smsCheckCode":"${smscheckcode}"}    None    None    密码须为8~16位英文、数字或下划线组合
+    sleep    2
+case4
+    [Documentation]    忘记密码修改密码a12345
+    [Tags]    Level2
+    [Setup]    forgetpwd and sendcode     ${Newphone1}
+    HttpApi     /api/userAuth/forgetPwd    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"account":"${Newphone1}","newPassword":"${Newphone1_psw2}","affirmPassword":"${Newphone1_psw2}","smsCheckCode":"${smscheckcode}"}    None    None    密码须为8~16位英文、数字或下划线组合
+    sleep    2
+case5
+    [Documentation]    忘记密码修改密码a1234567890123456
+    [Tags]    Level2
+    [Setup]    forgetpwd and sendcode     ${Newphone1}
+    HttpApi     /api/userAuth/forgetPwd    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"account":"${Newphone1}","newPassword":"${Newphone1_psw3}","affirmPassword":"${Newphone1_psw3}","smsCheckCode":"${smscheckcode}"}    None    None    密码须为8~16位英文、数字或下划线组合
+    sleep    2
+case6
+    [Documentation]    忘记密码修改密码密码为空
+    [Tags]    Level2
+    [Setup]    forgetpwd and sendcode     ${Newphone1}
+    HttpApi     /api/userAuth/forgetPwd    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"account":"${Newphone1}","newPassword":"${Newphone1_psw4}","affirmPassword":"${Newphone1_psw4}","smsCheckCode":"${smscheckcode}"}    None    None    密码须为8~16位英文、数字或下划线组合
+    sleep    2
+case7
+    [Documentation]    忘记密码修改密码验证码为空
+    [Tags]    Level2
+    [Setup]    forgetpwd and sendcode     ${Newphone1}
+    HttpApi     /api/userAuth/forgetPwd    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"account":"${Newphone1}","newPassword":"${Newphone1_psw}","affirmPassword":"${Newphone1_psw}","smsCheckCode":""}    None    None    验证码错误
+    sleep    2
+case8
+    [Documentation]    忘记密码修改密码验证码错误
+    [Tags]    Level2
+    [Setup]    forgetpwd and sendcode     ${Newphone1}
+    HttpApi     /api/userAuth/forgetPwd    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"account":"${Newphone1}","newPassword":"${Newphone1_psw}","affirmPassword":"${Newphone1_psw}","smsCheckCode":"123456"}    None    None    验证码错误
+    sleep    2
+case9
+    [Documentation]    不传account(account必传)
+    [Tags]    Level3
+    [Setup]    forgetpwd and sendcode     ${Newphone1}
+    HttpApi     /api/userAuth/forgetPwd    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"newPassword":"${Newphone1_psw}","affirmPassword":"${Newphone1_psw}","smsCheckCode":"${smscheckcode}"}    None    None    手机号不能为空
+    sleep    2
+case10
+    [Documentation]    不传newPassword(newPassword必传)
+    [Tags]    Level3
+    [Setup]    forgetpwd and sendcode     ${Newphone1}
+    HttpApi     /api/userAuth/forgetPwd    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"account":"${Newphone1}","affirmPassword":"${Newphone1_psw}","smsCheckCode":"${smscheckcode}"}    None    None    新密码不能为空
+    sleep    2
+case11
+    [Documentation]    不传affirmPassword(affirmPassword必传)
+    [Tags]    Level3
+    [Setup]    forgetpwd and sendcode     ${Newphone1}
+    HttpApi     /api/userAuth/forgetPwd    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"account":"${Newphone1}","newPassword":"${Newphone1_psw}","smsCheckCode":"${smscheckcode}"}    None    None    确认密码不能为空
+    sleep    2
+case12
+    [Documentation]    不传smsCheckCode(smsCheckCode必传)
+    [Tags]    Level3
+    [Setup]    forgetpwd and sendcode     ${Newphone1}
+    HttpApi     /api/userAuth/forgetPwd    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"account":"${Newphone1}","newPassword":"${Newphone1_psw}","affirmPassword":"${Newphone1_psw}"}    None    None    parameter 'smsCheckCode' is not present
+    sleep    2

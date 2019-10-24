@@ -1,0 +1,37 @@
+*** Settings ***
+Resource     ../../../../config_file/Data.txt
+Resource     ../../../${data_env}/resource.txt
+Resource     ../../../keyword/keyword.txt
+Library    lib
+Test Template     HttpApi
+Suite Setup     open account phone
+
+*** Test Cases ***
+case1
+    [Documentation]    身份证姓名为空
+    [Tags]    Level2
+    /api/userAccountInfo/openAccount    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"userId":"","cifName":"","idNum":"${idcard}","equipmentType":"app","authAmt":"100000","authDue":"12"}    ${openaccount}    a1234567    用户姓名不能为空
+case2
+    [Documentation]    身份证号码为空
+    [Tags]    Level2
+    /api/userAccountInfo/openAccount    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"userId":"","cifName":"可删","idNum":"","equipmentType":"app","authAmt":"100000","authDue":"12"}    ${openaccount}    a1234567    身份证号不能为空
+case3
+    [Documentation]    cifName字段不传(cifName为必传字段)
+    [Tags]    Level3
+    /api/userAccountInfo/openAccount    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"userId":"","idNum":"${idcard}","equipmentType":"app","authAmt":"100000","authDue":"12"}    ${openaccount}    a1234567    用户姓名不能为空
+case4
+    [Documentation]    idName字段不传(idName为必传字段)
+    [Tags]    Level3
+    /api/userAccountInfo/openAccount    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"userId":"","cifName":"可删","equipmentType":"app","authAmt":"100000","authDue":"12"}    ${openaccount}    a1234567    身份证号不能为空
+case5
+    [Documentation]    authAmt字段不传(authAmt为必传字段)
+    [Tags]    Level3
+    /api/userAccountInfo/openAccount    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"userId":"","cifName":"可删","idNum":"${idcard}","equipmentType":"app","authDue":"12"}    ${openaccount}    a1234567    授权金额不能为空
+case6
+    [Documentation]    authDue字段不传(authDue为必传字段)
+    [Tags]    Level3
+    /api/userAccountInfo/openAccount    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"userId":"","cifName":"可删","idNum":"${idcard}","equipmentType":"app","authAmt":"100000"}    ${openaccount}    a1234567    授权期限不能为空
+case7
+    [Documentation]    用户开户(注意注册的账号154%)
+    [Tags]    Level1
+    /api/userAccountInfo/openAccount    post    {"Content-Type": "application/x-www-form-urlencoded"}    {"userId":"","cifName":"可删","idNum":"${idcard}","equipmentType":"app","authAmt":"30000000","authDue":"120"}    ${openaccount}    a1234567    "code":0
