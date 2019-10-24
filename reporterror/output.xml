@@ -1,0 +1,558 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20190807 13:53:53.670" generator="Robot 3.0.4 (Python 3.5.2 on win32)">
+<suite id="s1" name="公告列表查询接口 &amp; 散标逾期还款">
+<suite id="s1-s1" source="D:\PyWorkSpace\rob_frame\qutouwang\App\api\新闻公告帮助中心\公告列表查询接口.txt" name="公告列表查询接口">
+<test id="s1-s1-t1" name="case1">
+<kw library="lib" name="Http Api">
+<doc>:param path:</doc>
+<arguments>
+<arg>/api/home/app/findAppNoticeList</arg>
+<arg>post</arg>
+<arg>{"Content-Type": "application/x-www-form-urlencoded"}</arg>
+<arg>{"pageNum":"1","pageSize":"7"}</arg>
+<arg>None</arg>
+<arg>None</arg>
+<arg>"code":0</arg>
+</arguments>
+<msg timestamp="20190807 13:53:54.519" level="INFO">==================执行测试=====================
+http://192.168.1.77:85/qtw-invest-api/api/home/app/findAppNoticeList
+{'pageNum': '1', 'pageSize': '7'}
+{'Content-Type': 'application/x-www-form-urlencoded'}
+200
+期望值： "code":0
+实际值 {"code":0,"data":{"count":479,"list":[{"category":"1","content":"您好，接到&amp;quot;存管银行&amp;quot;的通知，为了提供更加优质的服务内容和使用体验，存管银行将于2019年3月29日20:00:00-24:00进行支付系统升级维护。维护期间，资金存管业务的提现交易将暂停服务，其他交易可正常使用，请提前做好安排。\r\n\r\n　　\r\n\r\n&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 由此给您带来的不便，敬请谅解！\r\n\r\n　　\r\n\r\n&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 感谢您对去投网长久以来的支持与理解。\r\n\r\n&amp;nbsp;\r\n\r\n去投网运营中心\r\n\r\n&amp;nbsp;2019年3月27日","createTime":null,"createUser":"","emergency":"0","modifyTime":null,"modifyUser":"","noticeSource":"去投网","oid":5600000024,"releaseDate":null,"releaseTime":1565149115000,"releaseTimeStr":"2019-08-07","removeYn":"\u0000","source":"","status":"","summary":"","title":"【20190327】关于\"存管\"银行系统升级维护的通知","topYn":"Y","url":"http://192.168.1.77:88/news/notices-list/detail/5600000024?equipmentType=app&amp;platform=app"},{"category":"0","content":"您好！为了更好的提高用户的使用体验，优化我们的产品功能，去投网APP（IOS）版本即日起将进行系统升级，预计需要5个工作日。\r\n\r\n&amp;nbsp;\r\n\r\n&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 在系统升级期间，您将暂时无法在IOS版本上进行充值、提现、出借、借款等操作。如您需要查看账户或进行出借，请通过电脑端登录去投网官网进行操作。如您有任何疑问，可以随时拨打客服热线400-181-0588，我们会及时为您处理。\r\n\r\n&amp;nbsp;\r\n\r\n&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 由于苹果应用商店审核周期较长，待审核通过后，我们将会以公告的形式在官网公布，请您及时关注去投网最新动态。\r\n\r\n&amp;nbsp;\r\n\r\n&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;去投网在此感谢广大用户长期以来的支持与鼓励，我们将继续努力为大家提供更安心更完善的用户体验。\r\n\r\n&amp;nbsp;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;\r\n\r\n&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;去投网运营中心\r\n\r\n2019年3月21日","createTime":null,"createUser":"","emergency":"0","modifyTime":null,"modifyUser":"","noticeSource":"去投网","oid":5600000022,"releaseDate":null,"releaseTime":1565141503000,"releaseTimeStr":"2019-08-07","removeYn":"\u0000","source":"","status":"","summary":"","title":"【20190321】去投网APP(IOS)版本升级公告","topYn":"Y","url":"http://192.168.1.77:88/news/notices-list/detail/5600000022?equipmentType=app&amp;platform=app"},{"category":"0","content":"您好！为了全面提升用户体验，去投网将于2019年3月18日09:00至12:00进行数据迁移，将旧版去投网数据统一迁移至新版本网站。届时将对网站用户造成以下影响，请知晓。\r\n\r\n&amp;nbsp;\r\n\r\n&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 【迁移时间】：2019年3月18日09:00至12:00\r\n\r\n&amp;nbsp;\r\n\r\n&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 【影响业务】：\r\n\r\n&amp;nbsp;\r\n\r\n&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 1、数据迁移期间，去投网旧版本将无法进行充值、提现等操作。迁移完成后可在新版本中进行相应操作，如有疑问，可拨打客服热线400-181-0588咨询，我们会及时为您处理。\r\n\r\n&amp;nbsp;\r\n\r\n&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 2、旧版本去投网用户需在数据迁移后登陆新版本去投网激活账户，激活后才可进行其他操作。\r\n\r\n&amp;nbsp;\r\n\r\n&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 3、旧版本去投网用户账户内资金将于数据迁移后的72小时内到账，请用户及时查询。如有疑问，可拨打客服热线400-181-0588咨询，我们会及时为您处理。\r\n\r\n&amp;nbsp;\r\n\r\n&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 由此给您带来的不便，敬请谅解！\r\n\r\n&amp;nbsp;\r\n\r\n&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 感谢您对去投网长久以来的支持与理解。\r\n\r\n&amp;nbsp;\r\n\r\n去投网运营中心\r\n\r\n&amp;nbsp;\r\n\r\n2019年3月15日\r\n&amp;nbsp;","createTime":null,"createUser":"","emergency":"0","modifyTime":null,"modifyUser":"","noticeSource":"去投网","oid":5600000020,"releaseDate":null,"releaseTime":1565141502000,"releaseTimeStr":"2019-08-07","removeYn":"\u0000","source":"","status":"","summary":"","title":"【20190315】关于去投网旧版本数据迁移的说明公告","topYn":"Y","url":"http://192.168.1.77:88/news/notices-list/detail/5600000020?equipmentType=app&amp;platform=app"},{"category":"1","content":"您好，接到存管银行的通知，\r\n\r\n&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;\r\n\r\n&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp;1、【浦发银行】将于3月29日23：00-3月30日5：00进行系统升级维护，期间将对我平台全部业务造成影响，请您知晓。　\r\n\r\n&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;\r\n\r\n&amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp;2、【华夏银行】将于3月30日02：00-06：00进行系统升级维护，期间将对我平台全部业务造成影响，请您知晓。\r\n\r\n&amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp;\r\n\r\n&amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp;3、【农业银行】将于3月31日04：30-04：40进行系统升级维护，期间将对我平台全部业务造成影响，请您知晓。\r\n\r\n&amp;nbsp;&amp;nbsp;\r\n\r\n&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 由此给您带来的不便，敬请谅解！\r\n\r\n&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;\r\n\r\n&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 感谢您对去投网长久以来的支持与理解。\r\n\r\n&amp;nbsp;\r\n\r\n去投网运营中心\r\n\r\n&amp;nbsp;\r\n\r\n2019年3月29日\r\n\r\n&amp;nbsp;","createTime":null,"createUser":"","emergency":"0","modifyTime":null,"modifyUser":"","noticeSource":"去投网","oid":5600000027,"releaseDate":null,"releaseTime":1565141501000,"releaseTimeStr":"2019-08-07","removeYn":"\u0000","source":"","status":"","summary":"","title":"【20190329】关于三则银行系统升级维护的通知","topYn":"Y","url":"http://192.168.1.77:88/news/notices-list/detail/5600000027?equipmentType=app&amp;platform=app"},{"category":"1","content":"您好，接到中：&amp;ldquo;国银联通&amp;rdquo;知，中国银联计划于2019年3月28日23:00至3月29日05:00点，实施全渠道批量系统升级操作。升级期间资金存管的提现业务、批量代收、批量代付、批量查询、批量退货交易平台将暂停对外服务，请您提前做好安排。\r\n\r\n&amp;nbsp;\r\n\r\n&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;由此给您带来的不便，敬请谅解！\r\n\r\n&amp;nbsp;\r\n\r\n&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;感谢您对去投网长久以来的支持与理解。\r\n\r\n&amp;nbsp;\r\n\r\n&amp;nbsp;\r\n\r\n&amp;nbsp;\r\n\r\n去投网运营中心\r\n\r\n　\r\n\r\n2019年3月28日","createTime":null,"createUser":"","emergency":"0","modifyTime":null,"modifyUser":"","noticeSource":"去投网","oid":5600000026,"releaseDate":null,"releaseTime":1565141500000,"releaseTimeStr":"2019-08-07","removeYn":"\u0000","source":"","status":"","summary":"","title":"【20190626】关于“中国银”联系统升级维护通知","topYn":"Y","url":"http://192.168.1.77:88/news/notices-list/detail/5600000026?equipmentType=app&amp;platform=app"},{"category":"0","content":"您好，去投网于2019年3月21日至2019年3月27日已经对去投网APP(IOS)版本完成了系统升级。现充值、提现、出借、借款等相关功能也均恢复，由此给您带来的不便敬请谅解。\r\n\r\n&amp;nbsp;\r\n\r\n&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;去投网在此感谢广大用户长期以来的支持与鼓励，我们将继续努力为大家提供更安心更完善的用户体验。\r\n\r\n&amp;nbsp;\r\n\r\n&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;感谢您对去投网长久以来的支持与关注。\r\n\r\n&amp;nbsp;\r\n\r\n去投网运营中心\r\n\r\n2019年3月27日","createTime":null,"createUser":"","emergency":"0","modifyTime":null,"modifyUser":"","noticeSource":"去投网","oid":5600000025,"releaseDate":null,"releaseTime":1565141499000,"releaseTimeStr":"2019-08-07","removeYn":"\u0000","source":"","status":"","summary":"","title":"【20190327】去投网APP(IOS)版本升级成功完成公告","topYn":"Y","url":"http://192.168.1.77:88/news/notices-list/detail/5600000025?equipmentType=app&amp;platform=app"},{"category":"1","content":"您好，接到存管银行的通知，\r\n\r\n&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;\r\n\r\n&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 1、【浦发银行】将于3月24日3:30-5：30、3月26日21:00-3月27日5:00进行系统升级维护，期间将对我平台全部业务造成影响，请您知晓。　\r\n\r\n&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;\r\n\r\n&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 2、【广发银行】将于3月22日19：00-3月23日8：00进行系统升级维护，期间将对我平台全部业务造成影响，请您知晓。\r\n\r\n&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;\r\n\r\n&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 3、【上海银行】将于3月23日0:00-1：30进行系统升级维护，期间将对我平台全部业务造成影响，请您知晓。\r\n\r\n&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;\r\n\r\n&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 4、【民生银行】将于3月24日0:00-8:00进行系统升级维护，期间将对我平台全部业务造成影响，请您知晓。\r\n\r\n&amp;nbsp;\r\n\r\n&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 5、【农业银行】将于3月24日2:00至6:00进行系统升级维护，期间将对我平台全部业务造成影响，请您知晓。\r\n\r\n&amp;nbsp;\r\n\r\n&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 6、【中信银行】将于3月23日0：00-6：00进行系统升级维护，期间将对我平台全部业务造成影响，请您知晓。\r\n\r\n&amp;nbsp;\r\n\r\n&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 7、【工商银行】将于3月24日1：00-2：00；4：00-6：30进行系统升级维护，期间将对我平台全部业务造成影响，请您知晓。\r\n\r\n&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;\r\n\r\n&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; &amp;nbsp;8、【华夏银行】将于3月24日1：00-2：30进行系统升级维护，期间将对我平台全部业务造成影响，请您知晓。\r\n\r\n&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;\r\n\r\n&amp;nbsp;\r\n\r\n&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 由此给您带来的不便，敬请谅解！\r\n\r\n&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;\r\n\r\n&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 感谢您对去投网长久以来的支持与理解。\r\n\r\n&amp;nbsp;\r\n\r\n去投网运营中心\r\n\r\n&amp;nbsp;\r\n\r\n2019年3月22日","createTime":null,"createUser":"","emergency":"0","modifyTime":null,"modifyUser":"","noticeSource":"去投网","oid":5600000023,"releaseDate":null,"releaseTime":1553248371000,"releaseTimeStr":"2019-03-22","removeYn":"\u0000","source":"","status":"","summary":"","title":"【20190315】关于八则银行系统升级维护的通知","topYn":"Y","url":"http://192.168.1.77:88/news/notices-list/detail/5600000023?equipmentType=app&amp;platform=app"}]},"message":"成功"}</msg>
+<status endtime="20190807 13:53:54.520" status="PASS" starttime="20190807 13:53:54.479"></status>
+</kw>
+<doc>app端查询公告列表</doc>
+<tags>
+<tag>Level1</tag>
+</tags>
+<status endtime="20190807 13:53:54.520" status="PASS" critical="yes" starttime="20190807 13:53:54.479"></status>
+</test>
+<test id="s1-s1-t2" name="case2">
+<kw library="lib" name="Http Api">
+<doc>:param path:</doc>
+<arguments>
+<arg>/api/home/pc/findPcNoticeList</arg>
+<arg>post</arg>
+<arg>{"Content-Type": "application/x-www-form-urlencoded"}</arg>
+<arg>{"pageNum":"1","pageSize":"7"}</arg>
+<arg>None</arg>
+<arg>None</arg>
+<arg>"code":0</arg>
+</arguments>
+<msg timestamp="20190807 13:53:54.542" level="INFO">==================执行测试=====================
+http://192.168.1.77:85/qtw-invest-api/api/home/pc/findPcNoticeList
+{'pageNum': '1', 'pageSize': '7'}
+{'Content-Type': 'application/x-www-form-urlencoded'}
+200
+期望值： "code":0
+实际值 {"code":0,"data":{"count":479,"list":[{"category":"1","content":"您好，接到&amp;quot;存管银行&amp;quot;的通知，为了提供更加优质的服务内容和使用体验，存管银行将于2019年3月29日20:00:00-24:00进行支付系统升级维护。维护期间，资金存管业务的提现交易将暂停服务，其他交易可正常使用，请提前做好安排。　　&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 由此给您带来的不便，敬请谅解！　　&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 感谢您对去投网长久以来的支持与理解。&amp;nbsp;去投网运营中心&amp;nbsp;2019年3月27日","createTime":null,"createUser":"","emergency":"0","modifyTime":null,"modifyUser":"","noticeSource":"去投网","oid":5600000024,"releaseDate":null,"releaseTime":1565149115000,"releaseTimeStr":"20190807","removeYn":"\u0000","source":"","status":"","summary":"您好，接到&amp;quot;存管银行&amp;quot;的通知，为了提供更加优质的服务内容和使用体验，存管银行将于2019年3月29日20:00:00-24:00进行支付系统升级维护。维护期间，资金存管业务的提现交...","title":"【20190327】关于\"存管\"银行系统升级维护的通知","topYn":"Y","url":""},{"category":"0","content":"您好！为了更好的提高用户的使用体验，优化我们的产品功能，去投网APP（IOS）版本即日起将进行系统升级，预计需要5个工作日。&amp;nbsp;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 在系统升级期间，您将暂时无法在IOS版本上进行充值、提现、出借、借款等操作。如您需要查看账户或进行出借，请通过电脑端登录去投网官网进行操作。如您有任何疑问，可以随时拨打客服热线400-181-0588，我们会及时为您处理。&amp;nbsp;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 由于苹果应用商店审核周期较长，待审核通过后，我们将会以公告的形式在官网公布，请您及时关注去投网最新动态。&amp;nbsp;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;去投网在此感谢广大用户长期以来的支持与鼓励，我们将继续努力为大家提供更安心更完善的用户体验。&amp;nbsp;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;去投网运营中心2019年3月21日","createTime":null,"createUser":"","emergency":"0","modifyTime":null,"modifyUser":"","noticeSource":"去投网","oid":5600000022,"releaseDate":null,"releaseTime":1565141503000,"releaseTimeStr":"20190807","removeYn":"\u0000","source":"","status":"","summary":"您好！为了更好的提高用户的使用体验，优化我们的产品功能，去投网APP（IOS）版本即日起将进行系统升级，预计需要5个工作日。    在系统升...","title":"【20190321】去投网APP(IOS)版本升级公告","topYn":"Y","url":""},{"category":"0","content":"您好！为了全面提升用户体验，去投网将于2019年3月18日09:00至12:00进行数据迁移，将旧版去投网数据统一迁移至新版本网站。届时将对网站用户造成以下影响，请知晓。&amp;nbsp;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 【迁移时间】：2019年3月18日09:00至12:00&amp;nbsp;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 【影响业务】：&amp;nbsp;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 1、数据迁移期间，去投网旧版本将无法进行充值、提现等操作。迁移完成后可在新版本中进行相应操作，如有疑问，可拨打客服热线400-181-0588咨询，我们会及时为您处理。&amp;nbsp;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 2、旧版本去投网用户需在数据迁移后登陆新版本去投网激活账户，激活后才可进行其他操作。&amp;nbsp;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 3、旧版本去投网用户账户内资金将于数据迁移后的72小时内到账，请用户及时查询。如有疑问，可拨打客服热线400-181-0588咨询，我们会及时为您处理。&amp;nbsp;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 由此给您带来的不便，敬请谅解！&amp;nbsp;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 感谢您对去投网长久以来的支持与理解。&amp;nbsp;去投网运营中心&amp;nbsp;2019年3月15日&amp;nbsp;","createTime":null,"createUser":"","emergency":"0","modifyTime":null,"modifyUser":"","noticeSource":"去投网","oid":5600000020,"releaseDate":null,"releaseTime":1565141502000,"releaseTimeStr":"20190807","removeYn":"\u0000","source":"","status":"","summary":"您好！为了全面提升用户体验，去投网将于2019年3月18日09:00至12:00进行数据迁移，将旧版去投网数据统一迁移至新版本网站。届时将对网站用户造成以下影响，请知晓。 &amp;n...","title":"【20190315】关于去投网旧版本数据迁移的说明公告","topYn":"Y","url":""},{"category":"1","content":"您好，接到存管银行的通知，&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp;1、【浦发银行】将于3月29日23：00-3月30日5：00进行系统升级维护，期间将对我平台全部业务造成影响，请您知晓。　&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp;2、【华夏银行】将于3月30日02：00-06：00进行系统升级维护，期间将对我平台全部业务造成影响，请您知晓。&amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp;&amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp;3、【农业银行】将于3月31日04：30-04：40进行系统升级维护，期间将对我平台全部业务造成影响，请您知晓。&amp;nbsp;&amp;nbsp;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 由此给您带来的不便，敬请谅解！&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 感谢您对去投网长久以来的支持与理解。&amp;nbsp;去投网运营中心&amp;nbsp;2019年3月29日&amp;nbsp;","createTime":null,"createUser":"","emergency":"0","modifyTime":null,"modifyUser":"","noticeSource":"去投网","oid":5600000027,"releaseDate":null,"releaseTime":1565141501000,"releaseTimeStr":"20190807","removeYn":"\u0000","source":"","status":"","summary":"您好，接到存管银行的通知，      1、【浦发银行】将于3月29日23：00-3月30日5...","title":"【20190329】关于三则银行系统升级维护的通知","topYn":"Y","url":""},{"category":"1","content":"您好，接到中：&amp;ldquo;国银联通&amp;rdquo;知，中国银联计划于2019年3月28日23:00至3月29日05:00点，实施全渠道批量系统升级操作。升级期间资金存管的提现业务、批量代收、批量代付、批量查询、批量退货交易平台将暂停对外服务，请您提前做好安排。&amp;nbsp;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;由此给您带来的不便，敬请谅解！&amp;nbsp;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;感谢您对去投网长久以来的支持与理解。&amp;nbsp;&amp;nbsp;&amp;nbsp;去投网运营中心　2019年3月28日","createTime":null,"createUser":"","emergency":"0","modifyTime":null,"modifyUser":"","noticeSource":"去投网","oid":5600000026,"releaseDate":null,"releaseTime":1565141500000,"releaseTimeStr":"20190807","removeYn":"\u0000","source":"","status":"","summary":"您好，接到中：&amp;ldquo;国银联通&amp;rdquo;知，中国银联计划于2019年3月28日23:00至3月29日05:00点，实施全渠道批量系统升级操作。升级期间资金存管的提现业务、批量代收、批量代付、...","title":"【20190626】关于“中国银”联系统升级维护通知","topYn":"Y","url":""},{"category":"0","content":"您好，去投网于2019年3月21日至2019年3月27日已经对去投网APP(IOS)版本完成了系统升级。现充值、提现、出借、借款等相关功能也均恢复，由此给您带来的不便敬请谅解。&amp;nbsp;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;去投网在此感谢广大用户长期以来的支持与鼓励，我们将继续努力为大家提供更安心更完善的用户体验。&amp;nbsp;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;感谢您对去投网长久以来的支持与关注。&amp;nbsp;去投网运营中心2019年3月27日","createTime":null,"createUser":"","emergency":"0","modifyTime":null,"modifyUser":"","noticeSource":"去投网","oid":5600000025,"releaseDate":null,"releaseTime":1565141499000,"releaseTimeStr":"20190807","removeYn":"\u0000","source":"","status":"","summary":"您好，去投网于2019年3月21日至2019年3月27日已经对去投网APP(IOS)版本完成了系统升级。现充值、提现、出借、借款等相关功能也均恢复，由此给您带来的不便敬请谅解。...","title":"【20190327】去投网APP(IOS)版本升级成功完成公告","topYn":"Y","url":""},{"category":"1","content":"您好，接到存管银行的通知，&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 1、【浦发银行】将于3月24日3:30-5：30、3月26日21:00-3月27日5:00进行系统升级维护，期间将对我平台全部业务造成影响，请您知晓。　&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 2、【广发银行】将于3月22日19：00-3月23日8：00进行系统升级维护，期间将对我平台全部业务造成影响，请您知晓。&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 3、【上海银行】将于3月23日0:00-1：30进行系统升级维护，期间将对我平台全部业务造成影响，请您知晓。&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 4、【民生银行】将于3月24日0:00-8:00进行系统升级维护，期间将对我平台全部业务造成影响，请您知晓。&amp;nbsp;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 5、【农业银行】将于3月24日2:00至6:00进行系统升级维护，期间将对我平台全部业务造成影响，请您知晓。&amp;nbsp;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 6、【中信银行】将于3月23日0：00-6：00进行系统升级维护，期间将对我平台全部业务造成影响，请您知晓。&amp;nbsp;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 7、【工商银行】将于3月24日1：00-2：00；4：00-6：30进行系统升级维护，期间将对我平台全部业务造成影响，请您知晓。&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; &amp;nbsp;8、【华夏银行】将于3月24日1：00-2：30进行系统升级维护，期间将对我平台全部业务造成影响，请您知晓。&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 由此给您带来的不便，敬请谅解！&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 感谢您对去投网长久以来的支持与理解。&amp;nbsp;去投网运营中心&amp;nbsp;2019年3月22日","createTime":null,"createUser":"","emergency":"0","modifyTime":null,"modifyUser":"","noticeSource":"去投网","oid":5600000023,"releaseDate":null,"releaseTime":1553248371000,"releaseTimeStr":"20190322","removeYn":"\u0000","source":"","status":"","summary":" 您好，接到存管银行的通知，       1、【浦发银行】将于3月24日3:30-5：30、3月26日2...","title":"【20190315】关于八则银行系统升级维护的通知","topYn":"Y","url":""}]},"message":"成功"}</msg>
+<status endtime="20190807 13:53:54.543" status="PASS" starttime="20190807 13:53:54.521"></status>
+</kw>
+<doc>pc端查询公告列表</doc>
+<tags>
+<tag>Level2</tag>
+</tags>
+<status endtime="20190807 13:53:54.543" status="PASS" critical="yes" starttime="20190807 13:53:54.520"></status>
+</test>
+<status endtime="20190807 13:53:54.543" status="PASS" starttime="20190807 13:53:53.693"></status>
+</suite>
+<suite id="s1-s2" source="D:\PyWorkSpace\rob_frame\qutouwang\App\Func\Invest\散标逾期还款.txt" name="散标逾期还款">
+<kw type="setup" name="loan and core login">
+<kw library="lib" name="Loansyslogin">
+<doc>:return: 借贷系统登录session</doc>
+<arguments>
+<arg>${loanusername}</arg>
+<arg>${loanuserpassword}</arg>
+</arguments>
+<msg timestamp="20190807 13:53:54.569" level="INFO">借贷系统登录
+{"errorCode":0,"errorMessage":""}</msg>
+<status endtime="20190807 13:53:54.569" status="PASS" starttime="20190807 13:53:54.553"></status>
+</kw>
+<kw library="lib" name="Coresyslogin">
+<doc>:return: 核心系统登录session</doc>
+<msg timestamp="20190807 13:53:54.604" level="INFO">核心系统登录
+jQuery17209220007142597262_1541401333724({"view":null,"model":{"redirectUrl":"/controlPanel/","authInfo":{"loginAccount":"sysadmin","ticket":"1565157230966_1ec77f1b60bda741ae7ed955a82c3e646ac0f9555384bd4389a20b4d7c91472d3e03ecfebe669013214b7d4014bd72559dfb90dee929960a","user":{"id":10000000,"operatorCode":"sysadmin","operatorName":"系统管理员","password":"noNull","lastLogin":"2019-08-07 13:42:49","locked":false,"status":"1","insertTime":"2017-04-05 16:53:45","operateTime":"2019-08-07 13:42:48"}},"result":"SUCCESS","sessionId":"b0d834ba-c557-4b03-a40d-144f2bf10594","formToken":"5339609aae504bb085f2405f35b7ae77"},"viewName":null,"reference":false,"modelMap":{"redirectUrl":"/controlPanel/","authInfo":{"loginAccount":"sysadmin","ticket":"1565157230966_1ec77f1b60bda741ae7ed955a82c3e646ac0f9555384bd4389a20b4d7c91472d3e03ecfebe669013214b7d4014bd72559dfb90dee929960a","user":{"id":10000000,"operatorCode":"sysadmin","operatorName":"系统管理员","password":"noNull","lastLogin":"2019-08-07 13:42:49","locked":false,"status":"1","insertTime":"2017-04-05 16:53:45","operateTime":"2019-08-07 13:42:48"}},"result":"SUCCESS","sessionId":"b0d834ba-c557-4b03-a40d-144f2bf10594","formToken":"5339609aae504bb085f2405f35b7ae77"},"empty":false})</msg>
+<status endtime="20190807 13:53:54.605" status="PASS" starttime="20190807 13:53:54.569"></status>
+</kw>
+<status endtime="20190807 13:53:54.605" status="PASS" starttime="20190807 13:53:54.553"></status>
+</kw>
+<test id="s1-s2-t1" name="case1">
+<kw library="lib" name="Loaninfodebt">
+<doc>:param name: 借款人姓名</doc>
+<arguments>
+<arg>${theborrowername}</arg>
+<arg>${theborrowerphone}</arg>
+<arg>${theborroweridcard}</arg>
+<arg>0.1</arg>
+<arg>6</arg>
+<arg>10000</arg>
+</arguments>
+<msg timestamp="20190807 13:53:54.709" level="INFO">进件编号为jj2019080700014</msg>
+<status endtime="20190807 13:53:54.709" status="PASS" starttime="20190807 13:53:54.606"></status>
+</kw>
+<kw library="BuiltIn" name="Sleep">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>5</arg>
+</arguments>
+<msg timestamp="20190807 13:53:59.712" level="INFO">Slept 5 seconds</msg>
+<status endtime="20190807 13:53:59.712" status="PASS" starttime="20190807 13:53:54.710"></status>
+</kw>
+<doc>散标逾期1.借款系统导入债权</doc>
+<tags>
+<tag>Level2</tag>
+</tags>
+<status endtime="20190807 13:53:59.713" status="PASS" critical="yes" starttime="20190807 13:53:54.605"></status>
+</test>
+<test id="s1-s2-t2" name="case2">
+<kw library="lib" name="Read Resourse">
+<doc>:param code:</doc>
+<arguments>
+<arg>debtCode</arg>
+</arguments>
+<assign>
+<var>${debtCode}</var>
+</assign>
+<msg timestamp="20190807 13:53:59.718" level="INFO">${debtCode} = jj2019080700014</msg>
+<status endtime="20190807 13:53:59.718" status="PASS" starttime="20190807 13:53:59.717"></status>
+</kw>
+<kw library="lib" name="Http Api">
+<doc>:param path:</doc>
+<arguments>
+<arg>/api/loan/loanSystemContract</arg>
+<arg>post</arg>
+<arg>{"Content-Type": "application/x-www-form-urlencoded"}</arg>
+<arg>{"userId":"1122","debtcode":"${debtCode}"}</arg>
+<arg>${theborrowerphone}</arg>
+<arg>${theborrowerphone_pwd}</arg>
+<arg>"code":0</arg>
+</arguments>
+<msg timestamp="20190807 13:53:59.802" level="INFO">{'password': '3f319ded691d1f2648ccace7ead971b4', 'account': '19900000001'}
+================19900000001账户登录================
+http://192.168.1.77:85/qtw-invest-api/api/userAuth/login
+{'data': {'isExpire': '0', 'accountFlag': '1', 'userId': '19080002245635', 'refresh_token': '0f13c8db175f4017905e24000108ce22', 'signStatus': '1', 'reliveFlag': '1', 'userFlag': '1', 'mobile': '199****0001', 'cusType': '2', 'riskFlag': '0', 'access_token': '28f4da99a5114a9fb95526be74c4ad05', 'cardStatus': '3', 'headImg': None}, 'code': 0, 'message': ''}
+28f4da99a5114a9fb95526be74c4ad05
+==================执行测试=====================
+http://192.168.1.77:85/qtw-invest-api/api/loan/loanSystemContract
+{'debtcode': 'jj2019080700014', 'userId': '19080002245635'}
+{'accessToken': '28f4da99a5114a9fb95526be74c4ad05', 'Content-Type': 'application/x-www-form-urlencoded'}
+200
+期望值： "code":0
+实际值 {"code":0,"data":{"loanTips":[{"detail":"《借款人特别提示》","title":"《借款人特别提示》","url":"http://192.168.1.77:86/hyxd_qtw/contract/2018/12/12/《借款人特别提示》.pdf"},{"detail":"《借款合同》","title":"《借款合同》","url":"http://192.168.1.77:86/hyxd_qtw/contract/2018/12/12/《借款合同》.pdf"},{"detail":"《借款人服务协议》","title":"《借款人服务协议》","url":"http://192.168.1.77:86/hyxd_qtw/contract/2018/12/12/《借款人服务协议》.pdf"}],"list":{"bookrate":10,"servicefee":696.3200,"provisionFee":0,"applytol":10000.000000000,"productTypeName":"鑫优贷B","multiReturnSum":1831.670000000,"loanperiod":6}},"message":"签约信息展示查询成功"}</msg>
+<status endtime="20190807 13:53:59.802" status="PASS" starttime="20190807 13:53:59.719"></status>
+</kw>
+<kw library="BuiltIn" name="Sleep">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>5</arg>
+</arguments>
+<msg timestamp="20190807 13:54:04.805" level="INFO">Slept 5 seconds</msg>
+<status endtime="20190807 13:54:04.805" status="PASS" starttime="20190807 13:53:59.803"></status>
+</kw>
+<doc>散标逾期2.借款人签约</doc>
+<tags>
+<tag>Level2</tag>
+</tags>
+<status endtime="20190807 13:54:04.806" status="PASS" critical="yes" starttime="20190807 13:53:59.714"></status>
+</test>
+<test id="s1-s2-t3" name="case3">
+<kw library="lib" name="Read Resourse">
+<doc>:param code:</doc>
+<arguments>
+<arg>debtCode</arg>
+</arguments>
+<assign>
+<var>${debtCode}</var>
+</assign>
+<msg timestamp="20190807 13:54:04.814" level="INFO">${debtCode} = jj2019080700014</msg>
+<status endtime="20190807 13:54:04.814" status="PASS" starttime="20190807 13:54:04.812"></status>
+</kw>
+<kw library="lib" name="Debitcheck">
+<doc>:param debtCode: 债权编号</doc>
+<arguments>
+<arg>${debtCode}</arg>
+<arg>${thepaymentname}</arg>
+<arg>${thepaymentid}</arg>
+</arguments>
+<msg timestamp="20190807 13:54:04.947" level="INFO">进件列表—编辑
+债权编号jj2019080700014
+qtw借款端登编辑成功
+审核列表—审核</msg>
+<status endtime="20190807 13:54:04.948" status="PASS" starttime="20190807 13:54:04.815"></status>
+</kw>
+<kw library="BuiltIn" name="Sleep">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>20</arg>
+</arguments>
+<msg timestamp="20190807 13:54:24.950" level="INFO">Slept 20 seconds</msg>
+<status endtime="20190807 13:54:24.950" status="PASS" starttime="20190807 13:54:04.948"></status>
+</kw>
+<kw library="lib" name="Querydebt Id">
+<doc>:param debtCode: 债权编号</doc>
+<arguments>
+<arg>${debtCode}</arg>
+</arguments>
+<msg timestamp="20190807 13:54:25.013" level="INFO">jQuery172011043902518311977_1541756012872
+({"view":null,"model":{"page":{"pageNum":1,"pageSize":10,"size":1,"orderBy":null,"startRow":1,"endRow":1,"total":1,"pages":1,"list":[{"loanPeriodUnit":"m","currValue":10000.0000,"debtCode":"jj2019080700014","borrowerName":"借款人新","debtId":52600050607,"loanAmt":10000.0000,"repayType":"1","insertTime":"2019-08-07 13:54:01","currPeriod":"1","bookRate":10.0000,"isRegist":"01","loanMode":"0","loanStatus":"01","applyDate":"2019-08-07 13:53:51","debtType":"信贷","projectId":"234324","loanPeriod":6,"status":"on"}],"firstPage":1,"prePage":0,"nextPage":0,"lastPage":1,"isFirstPage":true,"isLastPage":true,"hasPreviousPage":false,"hasNextPage":false,"navigatePages":8,"navigatepageNums":[1]},"result":"SUCCESS","formToken":"77b24ea2fb554e63897647f9ea96f37c"},"viewName":null,"reference":false,"modelMap":{"page":{"pageNum":1,"pageSize":10,"size":1,"orderBy":null,"startRow":1,"endRow":1,"total":1,"pages":1,"list":[{"loanPeriodUnit":"m","currValue":10000.0000,"debtCode":"jj2019080700014","borrowerName":"借款人新","debtId":52600050607,"loanAmt":10000.0000,"repayType":"1","insertTime":"2019-08-07 13:54:01","currPeriod":"1","bookRate":10.0000,"isRegist":"01","loanMode":"0","loanStatus":"01","applyDate":"2019-08-07 13:53:51","debtType":"信贷","projectId":"234324","loanPeriod":6,"status":"on"}],"firstPage":1,"prePage":0,"nextPage":0,"lastPage":1,"isFirstPage":true,"isLastPage":true,"hasPreviousPage":false,"hasNextPage":false,"navigatePages":8,"navigatepageNums":[1]},"result":"SUCCESS","formToken":"77b24ea2fb554e63897647f9ea96f37c"},"empty":false})
+债权主键为52600050607</msg>
+<status endtime="20190807 13:54:25.013" status="PASS" starttime="20190807 13:54:24.951"></status>
+</kw>
+<kw library="BuiltIn" name="Sleep">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>5</arg>
+</arguments>
+<msg timestamp="20190807 13:54:30.014" level="INFO">Slept 5 seconds</msg>
+<status endtime="20190807 13:54:30.014" status="PASS" starttime="20190807 13:54:25.014"></status>
+</kw>
+<doc>散标逾期3.借款系统审核通过推送核心系统</doc>
+<tags>
+<tag>Level2</tag>
+</tags>
+<status endtime="20190807 13:54:30.015" status="PASS" critical="yes" starttime="20190807 13:54:04.807"></status>
+</test>
+<test id="s1-s2-t4" name="case4">
+<kw library="lib" name="Read Resourse">
+<doc>:param code:</doc>
+<arguments>
+<arg>debtIdcore</arg>
+</arguments>
+<assign>
+<var>${debtIdcore}</var>
+</assign>
+<msg timestamp="20190807 13:54:30.022" level="INFO">${debtIdcore} = 52600050607</msg>
+<status endtime="20190807 13:54:30.022" status="PASS" starttime="20190807 13:54:30.021"></status>
+</kw>
+<kw library="lib" name="Corecheckandfabiao">
+<doc>:param debtIdcore: 债权主键</doc>
+<arguments>
+<arg>${debtIdcore}</arg>
+</arguments>
+<msg timestamp="20190807 13:54:33.999" level="INFO">创建散标=================
+jQuery172024506418937789642_1543739601832
+({"view":null,"model":{"result":"SUCCESS","formToken":"4f58ab13a44340e5b7a06b5000d6bcc9"},"viewName":null,"reference":false,"modelMap":{"result":"SUCCESS","formToken":"4f58ab13a44340e5b7a06b5000d6bcc9"},"empty":false})
+=====================审核散标并发标========================
+债权对应的标的主键 20000028360
+标的的编号 bd19080700011
+http://192.168.1.77:84/core-admin-api/rest/standardProd/batchApprovalSubmit
+jQuery17206732644502681546_1542694420296
+({"view":null,"model":{"result":"SUCCESS","msg":"{}","formToken":"54d845d5c6d9438ca6404fee0764b087"},"viewName":null,"reference":false,"modelMap":{"result":"SUCCESS","msg":"{}","formToken":"54d845d5c6d9438ca6404fee0764b087"},"empty":false})
+核心发标成功</msg>
+<status endtime="20190807 13:54:33.999" status="PASS" starttime="20190807 13:54:30.023"></status>
+</kw>
+<doc>散标逾期4.核心系统创建散标并发标</doc>
+<tags>
+<tag>Level2</tag>
+</tags>
+<status endtime="20190807 13:54:34.000" status="PASS" critical="yes" starttime="20190807 13:54:30.016"></status>
+</test>
+<test id="s1-s2-t5" name="case5">
+<kw library="lib" name="Read Resourse">
+<doc>:param code:</doc>
+<arguments>
+<arg>bidNocore</arg>
+</arguments>
+<assign>
+<var>${bidNocore}</var>
+</assign>
+<msg timestamp="20190807 13:54:34.005" level="INFO">${bidNocore} = bd19080700011</msg>
+<status endtime="20190807 13:54:34.005" status="PASS" starttime="20190807 13:54:34.003"></status>
+</kw>
+<kw library="lib" name="Http Api">
+<doc>:param path:</doc>
+<arguments>
+<arg>/api/invest/app/investProduct</arg>
+<arg>post</arg>
+<arg>{"Content-Type": "application/x-www-form-urlencoded"}</arg>
+<arg>{"userId":"1122","pactissueNo":"${bidNocore}","investAmount":"10000","newRelease":"1","couponId":""}</arg>
+<arg>${thelenderphone}</arg>
+<arg>${thelenderphone_pwd}</arg>
+<arg>"code":0</arg>
+</arguments>
+<msg timestamp="20190807 13:54:34.623" level="INFO">{'password': '56a46608d334ce7cb0fc086b264dca05', 'account': '19900000002'}
+================19900000002账户登录================
+http://192.168.1.77:85/qtw-invest-api/api/userAuth/login
+{'data': {'isExpire': '0', 'accountFlag': '1', 'userId': '19082107243526', 'refresh_token': 'abdd7c6340b448e1bf25ba33a3efce28', 'signStatus': '1', 'reliveFlag': '1', 'userFlag': '1', 'mobile': '199****0002', 'cusType': '1', 'riskFlag': '1', 'access_token': '6baa31c0307d4043bee20b2ef911fd23', 'cardStatus': '3', 'headImg': None}, 'code': 0, 'message': ''}
+6baa31c0307d4043bee20b2ef911fd23
+==================执行测试=====================
+http://192.168.1.77:85/qtw-invest-api/api/invest/app/investProduct
+{'couponId': '', 'newRelease': '1', 'userId': '19082107243526', 'investAmount': '10000', 'pactissueNo': 'bd19080700011'}
+{'accessToken': '6baa31c0307d4043bee20b2ef911fd23', 'Content-Type': 'application/x-www-form-urlencoded'}
+200
+期望值： "code":0
+实际值 {"code":0,"data":{"isFull":"0"},"message":"您已经成功出借10,000.00元"}</msg>
+<status endtime="20190807 13:54:34.624" status="PASS" starttime="20190807 13:54:34.006"></status>
+</kw>
+<doc>散标逾期5.出借</doc>
+<tags>
+<tag>Level2</tag>
+</tags>
+<status endtime="20190807 13:54:34.624" status="PASS" critical="yes" starttime="20190807 13:54:34.000"></status>
+</test>
+<test id="s1-s2-t6" name="case6">
+<kw library="lib" name="Read Resourse">
+<doc>:param code:</doc>
+<arguments>
+<arg>debtCode</arg>
+</arguments>
+<assign>
+<var>${debtCode}</var>
+</assign>
+<msg timestamp="20190807 13:54:34.631" level="INFO">${debtCode} = jj2019080700014</msg>
+<status endtime="20190807 13:54:34.631" status="PASS" starttime="20190807 13:54:34.629"></status>
+</kw>
+<kw library="lib" name="Lendingbid">
+<doc>:param debtCode: 债权编号</doc>
+<arguments>
+<arg>${debtCode}</arg>
+</arguments>
+<msg timestamp="20190807 13:56:55.375" level="INFO">=======================第一步，查询放款列表的债权jj2019080700014=========================
+{"errorCode":0,"errorMessage":"","rows":[{"amountAmt":0,"amtState":"","applyAmt":1000000,"applyTitle":"","businessrate":"0.1","cifName":"借**","cifNo":"19080002245635","cifPhone":"19900000001","crKind":"","currentNum":"","debtdatatype":"1","endDate":"","fineCalBase":"","fineRate":"","fineType":"","fullTime":1565157271000,"lastReturnTime":"","loanBal":0,"loanNo":"jj2019080700014","loanStatus":"03","nextReturnDate":null,"normCalType":"","noticeAssets":"","noticeCore":"","occTime":null,"oid":3061,"pactissueName":"","pactissueNo":"","payOrderId":"","paymentsTime":null,"putoutAmt":0,"putoutTime":null,"putoutTlrname":"","putoutTlrno":"","rateType":"","remainingInterestAmt":0,"remainingPrincipalAmt":0,"remainingRiskReserveAmt":0,"remainingServiceAmt":0,"remainingUnpaidAmt":0,"returnMethod":"1","returnState":"","termDays":"","termMonths":"6"}],"total":1}
+======================第二步，债权放款==========================
+{"msg":"放款成功!放款执行完毕","nextReturnDate":"2019-09-07","code":"0000","loanNo":"jj2019080700014","putoutAmt":null,"cifNo":"19080002245635","orderId":"31190807135431050909","oid":3061,"threePartyId":"234324","contractCode":"201908070014JK"}
+======================第三步，判断债权状态为放款成功==========================
+04
+04
+04
+04
+04
+04
+00
+放款成功</msg>
+<status endtime="20190807 13:56:55.376" status="PASS" starttime="20190807 13:54:34.631"></status>
+</kw>
+<doc>散标逾期6.满标后放款</doc>
+<tags>
+<tag>Level2</tag>
+</tags>
+<status endtime="20190807 13:56:55.376" status="PASS" critical="yes" starttime="20190807 13:54:34.625"></status>
+</test>
+<test id="s1-s2-t7" name="case7">
+<kw library="lib" name="Read Resourse">
+<doc>:param code:</doc>
+<arguments>
+<arg>debtCode</arg>
+</arguments>
+<assign>
+<var>${debtCode}</var>
+</assign>
+<msg timestamp="20190807 13:56:55.385" level="INFO">${debtCode} = jj2019080700014</msg>
+<status endtime="20190807 13:56:55.386" status="PASS" starttime="20190807 13:56:55.383"></status>
+</kw>
+<kw library="lib" name="Repaymentdebt">
+<doc>:param username: 借款人账户</doc>
+<arguments>
+<arg>${theborrowerphone}</arg>
+<arg>${theborrowerphone_pwd}</arg>
+<arg>${debtCode}</arg>
+<arg>1</arg>
+</arguments>
+<msg timestamp="20190807 13:56:56.293" level="INFO">=====================借款人19900000001还款第1期=======================
+{'password': '3f319ded691d1f2648ccace7ead971b4', 'account': '19900000001'}
+================19900000001账户登录================
+http://192.168.1.77:85/qtw-invest-api/api/userAuth/login
+{'data': {'isExpire': '0', 'accountFlag': '1', 'userId': '19080002245635', 'refresh_token': '49ce11d611ec44aa8ccc24db328254db', 'signStatus': '1', 'reliveFlag': '1', 'userFlag': '1', 'mobile': '199****0001', 'cusType': '2', 'riskFlag': '0', 'access_token': '894b4c3112d24d6aa36ac6279d82814a', 'cardStatus': '3', 'headImg': None}, 'code': 0, 'message': ''}
+894b4c3112d24d6aa36ac6279d82814a
+==================执行测试=====================
+http://192.168.1.77:85/qtw-invest-api/api/loan/loanRepaymentShow
+{'debtcode': 'jj2019080700014', 'userId': '19080002245635', 'termNum': '1'}
+{'accessToken': '894b4c3112d24d6aa36ac6279d82814a', 'Content-Type': 'application/x-www-form-urlencoded'}
+200
+期望值： "code":0
+实际值 {"code":0,"data":{"list":{"reduce":0,"overIntst":0.0000,"riskReserve":0.0000,"shouldDate":1567785600000,"outFlag":"00","rateIncome":83.3300,"returnSum":1632.2800,"multiReturnSum":1831.6700,"bromanFee":116.0600}},"message":"查询成功"}
+{"code":0,"data":{"list":{"reduce":0,"overIntst":0.0000,"riskReserve":0.0000,"shouldDate":1567785600000,"outFlag":"00","rateIncome":83.3300,"returnSum":1632.2800,"multiReturnSum":1831.6700,"bromanFee":116.0600}},"message":"查询成功"}
+第1期的还款金额为1831.67
+{'password': '3f319ded691d1f2648ccace7ead971b4', 'account': '19900000001'}
+================19900000001账户登录================
+http://192.168.1.77:85/qtw-invest-api/api/userAuth/login
+{'data': {'isExpire': '0', 'accountFlag': '1', 'userId': '19080002245635', 'refresh_token': '9c25b0366b5444dbaaaa8e16c1077dc6', 'signStatus': '1', 'reliveFlag': '1', 'userFlag': '1', 'mobile': '199****0001', 'cusType': '2', 'riskFlag': '0', 'access_token': 'f793aac698134500bf2598c32f2a94ce', 'cardStatus': '3', 'headImg': None}, 'code': 0, 'message': ''}
+f793aac698134500bf2598c32f2a94ce
+==================执行测试=====================
+http://192.168.1.77:85/qtw-invest-api/api/loan/loanRepaymentOperation
+{'debtcode': 'jj2019080700014', 'termNum': '1', 'userId': '19080002245635', 'repaymentAmt': 1831.67}
+{'accessToken': 'f793aac698134500bf2598c32f2a94ce', 'Content-Type': 'application/x-www-form-urlencoded'}
+200
+期望值： "code":0
+实际值 {"code":0,"data":null,"message":"恭喜您，提前还款成功"}</msg>
+<status endtime="20190807 13:56:56.294" status="PASS" starttime="20190807 13:56:55.386"></status>
+</kw>
+<kw library="BuiltIn" name="Sleep">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>5</arg>
+</arguments>
+<msg timestamp="20190807 13:57:01.296" level="INFO">Slept 5 seconds</msg>
+<status endtime="20190807 13:57:01.296" status="PASS" starttime="20190807 13:56:56.294"></status>
+</kw>
+<kw library="lib" name="Corereturnedmoney">
+<doc>:param debtCode: 债权</doc>
+<arguments>
+<arg>${debtCode}</arg>
+<arg>1</arg>
+</arguments>
+<msg timestamp="20190807 13:59:01.755" level="INFO">=================跑手工任务给回款第1期，给出借人，时间2019-09-07====================
+jQuery17204517549754820951_1542806876216
+({"view":null,"model":{"result":"SUCCESS","formToken":"01511784ea9041b9baf836dbbad4bdd4"},"viewName":null,"reference":false,"modelMap":{"result":"SUCCESS","formToken":"01511784ea9041b9baf836dbbad4bdd4"},"empty":false})
+核心交易执行手工正常回款任务成功
+================查询还款状态====================
+3
+3
+3
+3
+3
+3
+3
+10
+回款成功</msg>
+<status endtime="20190807 13:59:01.756" status="PASS" starttime="20190807 13:57:01.297"></status>
+</kw>
+<doc>散标逾期7.借款人Pc借款端还款1期/回款1期</doc>
+<tags>
+<tag>Level2</tag>
+</tags>
+<status endtime="20190807 13:59:01.756" status="PASS" critical="yes" starttime="20190807 13:56:55.377"></status>
+</test>
+<test id="s1-s2-t8" name="case8">
+<kw library="lib" name="Read Resourse">
+<doc>:param code:</doc>
+<arguments>
+<arg>debtCode</arg>
+</arguments>
+<assign>
+<var>${debtCode}</var>
+</assign>
+<msg timestamp="20190807 13:59:01.763" level="INFO">${debtCode} = jj2019080700014</msg>
+<status endtime="20190807 13:59:01.763" status="PASS" starttime="20190807 13:59:01.761"></status>
+</kw>
+<kw library="lib" name="Overdueoneday">
+<doc>:param debtCode: 债权编号</doc>
+<arguments>
+<arg>${debtCode}</arg>
+<arg>2</arg>
+</arguments>
+<msg timestamp="20190807 14:01:52.377" level="INFO">==========逾期1天申请垫付===========
+还款日期向今天前推1天的时间2019-08-06
+==================第一步，逾期申请==================
+{"result":"success","orderId":"20190807140128290","thirdId":"762491","weburl":"http://60.10.20.15:22443/xinweb/index.html?custId=11423&amp;requestKey=462dc2a6-3a31-4e74-8ee0-0393bcf5a7d5","transAmt":171561,"projectId":"234324","feeAmt":0,"url":"http://192.168.1.77:83/null"}
+申请垫付成功
+==================第二步，机构垫付==================
+{"msg":"垫付操作失败","code":"0002","debtcode":"jj2019080700014","termNum":"2"}</msg>
+<msg timestamp="20190807 14:01:52.424" level="FAIL">逾期垫付失败</msg>
+<status endtime="20190807 14:01:52.425" status="FAIL" starttime="20190807 13:59:01.763"></status>
+</kw>
+<doc>散标逾期8.逾期1天申请垫付</doc>
+<tags>
+<tag>Level2</tag>
+</tags>
+<status endtime="20190807 14:01:52.426" status="FAIL" critical="yes" starttime="20190807 13:59:01.757">逾期垫付失败</status>
+</test>
+<test id="s1-s2-t9" name="case9">
+<kw library="lib" name="Read Resourse">
+<doc>:param code:</doc>
+<arguments>
+<arg>debtCode</arg>
+</arguments>
+<assign>
+<var>${debtCode}</var>
+</assign>
+<msg timestamp="20190807 14:01:52.433" level="INFO">${debtCode} = jj2019080700014</msg>
+<status endtime="20190807 14:01:52.433" status="PASS" starttime="20190807 14:01:52.431"></status>
+</kw>
+<kw library="lib" name="Overduemanyday">
+<arguments>
+<arg>${debtCode}</arg>
+<arg>2</arg>
+</arguments>
+<msg timestamp="20190807 14:04:22.500" level="INFO">==================借款人逾期8天，生成罚息数据==================
+第二期还款日期向今天前推8天的时间2019-07-30
+逾期罚息的金额为0</msg>
+<msg timestamp="20190807 14:04:22.501" level="FAIL">逾期之后没有生成罚息</msg>
+<status endtime="20190807 14:04:22.501" status="FAIL" starttime="20190807 14:01:52.434"></status>
+</kw>
+<doc>散标逾期9.逾期8天，逾期还款</doc>
+<tags>
+<tag>Level2</tag>
+</tags>
+<status endtime="20190807 14:04:22.502" status="FAIL" critical="yes" starttime="20190807 14:01:52.426">逾期之后没有生成罚息</status>
+</test>
+<test id="s1-s2-t10" name="case10">
+<kw library="lib" name="Read Resourse">
+<doc>:param code:</doc>
+<arguments>
+<arg>debtCode</arg>
+</arguments>
+<assign>
+<var>${debtCode}</var>
+</assign>
+<msg timestamp="20190807 14:04:22.508" level="INFO">${debtCode} = jj2019080700014</msg>
+<status endtime="20190807 14:04:22.509" status="PASS" starttime="20190807 14:04:22.507"></status>
+</kw>
+<kw library="lib" name="Repaymentdebt">
+<doc>:param username: 借款人账户</doc>
+<arguments>
+<arg>${theborrowerphone}</arg>
+<arg>${theborrowerphone_pwd}</arg>
+<arg>${debtCode}</arg>
+<arg>4</arg>
+</arguments>
+<msg timestamp="20190807 14:04:22.640" level="INFO">=====================借款人19900000001还款第4期=======================
+{'password': '3f319ded691d1f2648ccace7ead971b4', 'account': '19900000001'}
+================19900000001账户登录================
+http://192.168.1.77:85/qtw-invest-api/api/userAuth/login
+{'data': {'isExpire': '0', 'accountFlag': '1', 'userId': '19080002245635', 'refresh_token': '7edc3e7fce90412eb6aaed489e5d09f3', 'signStatus': '1', 'reliveFlag': '1', 'userFlag': '1', 'mobile': '199****0001', 'cusType': '2', 'riskFlag': '0', 'access_token': 'ec422265a8c3444087fd5cbdf9581e3b', 'cardStatus': '3', 'headImg': None}, 'code': 0, 'message': ''}
+ec422265a8c3444087fd5cbdf9581e3b
+==================执行测试=====================
+http://192.168.1.77:85/qtw-invest-api/api/loan/loanRepaymentShow
+{'debtcode': 'jj2019080700014', 'userId': '19080002245635', 'termNum': '4'}
+{'accessToken': 'ec422265a8c3444087fd5cbdf9581e3b', 'Content-Type': 'application/x-www-form-urlencoded'}
+200
+期望值： "code":0
+实际值 {"code":0,"data":{"list":{"reduce":0,"overIntst":0.0000,"riskReserve":0.0000,"shouldDate":1575648000000,"outFlag":"00","rateIncome":42.1800,"returnSum":1673.4300,"multiReturnSum":1831.6700,"bromanFee":116.0600}},"message":"查询成功"}
+{"code":0,"data":{"list":{"reduce":0,"overIntst":0.0000,"riskReserve":0.0000,"shouldDate":1575648000000,"outFlag":"00","rateIncome":42.1800,"returnSum":1673.4300,"multiReturnSum":1831.6700,"bromanFee":116.0600}},"message":"查询成功"}
+第4期的还款金额为1831.67
+{'password': '3f319ded691d1f2648ccace7ead971b4', 'account': '19900000001'}
+================19900000001账户登录================
+http://192.168.1.77:85/qtw-invest-api/api/userAuth/login
+{'data': {'isExpire': '0', 'accountFlag': '1', 'userId': '19080002245635', 'refresh_token': '2b8cb8d13d1d4cecbb7170279086bce9', 'signStatus': '1', 'reliveFlag': '1', 'userFlag': '1', 'mobile': '199****0001', 'cusType': '2', 'riskFlag': '0', 'access_token': 'd021bdcbae0f41d2b060ef6609a837ae', 'cardStatus': '3', 'headImg': None}, 'code': 0, 'message': ''}
+d021bdcbae0f41d2b060ef6609a837ae
+==================执行测试=====================
+http://192.168.1.77:85/qtw-invest-api/api/loan/loanRepaymentOperation
+{'debtcode': 'jj2019080700014', 'termNum': '4', 'userId': '19080002245635', 'repaymentAmt': 1831.67}
+{'accessToken': 'd021bdcbae0f41d2b060ef6609a837ae', 'Content-Type': 'application/x-www-form-urlencoded'}
+200
+期望值： "code":0
+实际值 {"code":23040,"data":null,"message":"抱歉，提前还款失败"}</msg>
+<msg timestamp="20190807 14:04:22.641" level="FAIL">实际结果：{"code":23040,"data":null,"message":"抱歉，提前还款失败"}，不符合期望的值："code":0</msg>
+<status endtime="20190807 14:04:22.642" status="FAIL" starttime="20190807 14:04:22.509"></status>
+</kw>
+<doc>散标逾期10.正常还款/回款</doc>
+<tags>
+<tag>Level2</tag>
+</tags>
+<status endtime="20190807 14:04:22.642" status="FAIL" critical="yes" starttime="20190807 14:04:22.503">实际结果：{"code":23040,"data":null,"message":"抱歉，提前还款失败"}，不符合期望的值："code":0</status>
+</test>
+<status endtime="20190807 14:04:22.644" status="FAIL" starttime="20190807 13:53:54.545"></status>
+</suite>
+<status endtime="20190807 14:04:22.653" status="FAIL" starttime="20190807 13:53:53.672"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="3" pass="9">Critical Tests</stat>
+<stat fail="3" pass="9">All Tests</stat>
+</total>
+<tag>
+<stat fail="0" pass="1">Level1</stat>
+<stat fail="3" pass="8">Level2</stat>
+</tag>
+<suite>
+<stat id="s1" fail="3" pass="9" name="公告列表查询接口 &amp; 散标逾期还款">公告列表查询接口 &amp; 散标逾期还款</stat>
+<stat id="s1-s1" fail="0" pass="2" name="公告列表查询接口">公告列表查询接口 &amp; 散标逾期还款.公告列表查询接口</stat>
+<stat id="s1-s2" fail="3" pass="7" name="散标逾期还款">公告列表查询接口 &amp; 散标逾期还款.散标逾期还款</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

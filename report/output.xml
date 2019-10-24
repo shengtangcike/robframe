@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20191023 17:24:01.014" generator="Robot 3.0.4 (Python 3.5.2 on win32)">
+<suite source="D:\PyWorkSpace\rob_frame\qutouwang\App\api\发现相关\DemoSuite.txt" name="DemoSuite" id="s1">
+<test name="case1" id="s1-t1">
+<kw type="for" name="${index} IN RANGE [ 5 ]">
+<kw type="foritem" name="${index} = 0">
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${index}</arg>
+</arguments>
+<msg timestamp="20191023 17:24:01.038" level="INFO">0</msg>
+<status starttime="20191023 17:24:01.037" endtime="20191023 17:24:01.038" status="PASS"></status>
+</kw>
+<status starttime="20191023 17:24:01.037" endtime="20191023 17:24:01.038" status="PASS"></status>
+</kw>
+<kw type="foritem" name="${index} = 1">
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${index}</arg>
+</arguments>
+<msg timestamp="20191023 17:24:01.038" level="INFO">1</msg>
+<status starttime="20191023 17:24:01.038" endtime="20191023 17:24:01.038" status="PASS"></status>
+</kw>
+<status starttime="20191023 17:24:01.038" endtime="20191023 17:24:01.038" status="PASS"></status>
+</kw>
+<kw type="foritem" name="${index} = 2">
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${index}</arg>
+</arguments>
+<msg timestamp="20191023 17:24:01.038" level="INFO">2</msg>
+<status starttime="20191023 17:24:01.038" endtime="20191023 17:24:01.038" status="PASS"></status>
+</kw>
+<status starttime="20191023 17:24:01.038" endtime="20191023 17:24:01.038" status="PASS"></status>
+</kw>
+<kw type="foritem" name="${index} = 3">
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${index}</arg>
+</arguments>
+<msg timestamp="20191023 17:24:01.039" level="INFO">3</msg>
+<status starttime="20191023 17:24:01.038" endtime="20191023 17:24:01.039" status="PASS"></status>
+</kw>
+<status starttime="20191023 17:24:01.038" endtime="20191023 17:24:01.039" status="PASS"></status>
+</kw>
+<kw type="foritem" name="${index} = 4">
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${index}</arg>
+</arguments>
+<msg timestamp="20191023 17:24:01.039" level="INFO">4</msg>
+<status starttime="20191023 17:24:01.039" endtime="20191023 17:24:01.039" status="PASS"></status>
+</kw>
+<status starttime="20191023 17:24:01.039" endtime="20191023 17:24:01.039" status="PASS"></status>
+</kw>
+<status starttime="20191023 17:24:01.037" endtime="20191023 17:24:01.039" status="PASS"></status>
+</kw>
+<doc>循环语句</doc>
+<status critical="yes" starttime="20191023 17:24:01.037" endtime="20191023 17:24:01.039" status="PASS"></status>
+</test>
+<status starttime="20191023 17:24:01.015" endtime="20191023 17:24:01.039" status="PASS"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="0" pass="1">Critical Tests</stat>
+<stat fail="0" pass="1">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="DemoSuite" pass="1" id="s1" fail="0">DemoSuite</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
